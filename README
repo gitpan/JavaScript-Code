@@ -1,5 +1,5 @@
 NAME
-    JavaScript::Code - JavaScript Code Framework
+    JavaScript::Code - A JavaScript Code Framework
 
 SYNOPSIS
         #!/usr/bin/perl
@@ -18,11 +18,27 @@ SYNOPSIS
         print $code->output_for_html;
 
 DESCRIPTION
+    Create javascript-code!
+
 METHODS
   $self->add( $element )
+    Adds a new element.
+
   $self->elements( )
+    Returns a ref-array of all added elements.
+
   $self->output( )
-  $self->output_for_html( < %args > )
+    Returns the javascript-code.
+
+  $self->output_for_html( < \%args > )
+    Returns the javascript-code that can be directly embedded into
+    html-code.
+
+    Optimal \%args: Key-value pairs that reprensent attributes that will be
+    associated to the script tag.
+
+        print $code->output_for_html( { language => undef } );
+
 SEE ALSO
     JavaScript::MochiKit
 

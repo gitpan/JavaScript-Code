@@ -4,12 +4,12 @@ use strict;
 use warnings;
 use Test::More tests => 3;
 
-my $result1 = "var a = 'Var!';\n";
+my $result1 = qq~var a = "Var!";\n~;
 my $result2 = "var b = 42;\n";
 my $result3 = <<"RESULT";
 <script language="Javascript" type="text/javascript"><!--
 
-var a = 'Var!';
+var a = "Var!";
 var b = 42;
 
 // --></script>

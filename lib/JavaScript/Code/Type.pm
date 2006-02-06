@@ -3,6 +3,7 @@ package JavaScript::Code::Type;
 use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Accessor ];
+use Carp;
 
 __PACKAGE__->mk_accessors(qw[ type value ]);
 
@@ -11,23 +12,66 @@ use JavaScript::Code::Number ();
 use JavaScript::Code::Array  ();
 use JavaScript::Code::Hash   ();
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 =head1 NAME
 
-JavaScript::Code::Type - Represents a javascript type
+JavaScript::Code::Type - Base class for javascript types
+
+=head1 SYNOPSIS
+
+    #!/usr/bin/perl
+
+    use strict;
+    use warnings;
+    use JavaScript::Code::Type;
+
+    my $type = JavaScript::Code::Type->new({ type => 'String' })->value("Go for it!");
+
+    print $type->output;
+
 
 =head1 METHODS
 
-=head2 $self->type( )
+=head2 JavaScript::Code::Type->new( )
 
 =cut
 
-=head2 $self->value( )
+sub new {
+    my $class = shift;
+
+    return $class->SUPER::new(@_)
+      unless $class eq __PACKAGE__;
+
+    my $args = shift;
+
+    my $via = lc(delete $args->{type} || '')
+      or croak "No type provided.";
+
+    substr($via, 0, 1) = uc substr($via, 0, 1);
+    $via = "JavaScript::Code::$via";
+
+    eval "require $via"; # make sure, it is loaded
+    croak $@ if $@;
+
+    return $via->new($args, @_);
+}
+
+=head2 $self->type( )
+
+Returns a string that represents the underlaying type.
+
+=cut
+
+=head2 $self->value( $value )
+
+Gets or sets the associated value.
 
 =cut
 
 =head2 $self->output( )
+
+Returns the javascript-code for that type.
 
 =cut
 

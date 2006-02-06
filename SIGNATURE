@@ -15,35 +15,36 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 e6c42be9558cf6e543262377616a52b6e97ded52 Build.PL
-SHA1 f047eb72d48f7558d2db3e1363d3bedd578d653c Changes
-SHA1 8ee2b96e3e8d7a2cdf92cf93ecf240e283c78763 MANIFEST
-SHA1 7f7d8f289651e4369b6b3f21e0da300b03070a59 META.yml
+SHA1 8fd548691b59221cd6d579ca7915062b6bda5d4c Changes
+SHA1 52843a932769b414e68bd984fe586c4f87186e75 MANIFEST
+SHA1 c2e20f20ab990a1e5394c393ebaa28e89fa97a27 META.yml
 SHA1 6f85ae5aa6cafa4b38ac7fb6ae41beeba54cf364 Makefile.PL
-SHA1 1135215250bf8ddd5c831caa8337b588fb162753 README
-SHA1 aa3d6b3119e38501907f5661811678aa34a0adcd lib/JavaScript/Code.pm
+SHA1 64c5f1e7021879f526b9f96a6643a44b86c1f463 README
+SHA1 c0d758137e960a123bf5e418edd6291ecc11a47a lib/JavaScript/Code.pm
 SHA1 7ebf31aa259e3a398259045469ca39fb577ac623 lib/JavaScript/Code/Accessor.pm
 SHA1 f4b1e32cf176a923474c8bdd871551d395d34ed9 lib/JavaScript/Code/Array.pm
-SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 lib/JavaScript/Code/Block.pm
-SHA1 c9d4a36d351ffea1cdc5fa252d5e7746c08d2528 lib/JavaScript/Code/Element.pm
+SHA1 625e2419748bd4888a7014c63c05419ab118aa74 lib/JavaScript/Code/Block.pm
+SHA1 c4d32f408049b96bf712834ec77cebce1eec0a04 lib/JavaScript/Code/Element.pm
+SHA1 a1896e3a7bec97d2327ba60d834391db7f0e85b6 lib/JavaScript/Code/Expression.pm
 SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 lib/JavaScript/Code/Function.pm
 SHA1 a535fef68d6a8ea901deb3f3512dc9b6953604a7 lib/JavaScript/Code/Hash.pm
-SHA1 6217b842e4db793b17780f47dc574c1f00a25591 lib/JavaScript/Code/Number.pm
-SHA1 7cda5389f11a184418b3f7889ed883af80ea2c0a lib/JavaScript/Code/String.pm
-SHA1 d53cd35f8c4d78317a6a5b4fc15ab6cb44acb957 lib/JavaScript/Code/Type.pm
-SHA1 094ce2995b9c88ce7335b703f6bc7a4638e79b50 lib/JavaScript/Code/Variable.pm
+SHA1 70f78a864dd32cda98c2218604f4b488514df238 lib/JavaScript/Code/Number.pm
+SHA1 42c3c146150dad19d3d603bb59d21874621a813a lib/JavaScript/Code/String.pm
+SHA1 142a0bf7720a1bf2b361ce3c72f17cc0be7fa1c7 lib/JavaScript/Code/Type.pm
+SHA1 cd311b6cfe9309ae4bd517ebf051042dd92ac847 lib/JavaScript/Code/Variable.pm
 SHA1 e7449bd745eb81ad6da60d436da977134b830ef4 t/01use.t
 SHA1 86d255a7c9f065a13049108362c949b3e35a4c24 t/02pod.t
 SHA1 e923679a1bbd8eb8f727e46f5906af25de27ec97 t/03podcoverage.t
-SHA1 808061e9989b93018e85c20e6a9815c83778efe6 t/04examples.t
+SHA1 ea0eaf98577d29c491d48db3bfc69e334393e456 t/04examples.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.4 (MingW32)
 Comment: GnuPT 2.7
 
-iQEVAwUBQ+a8aanM4kGH82hDAQL2JAf9HyPhN9W/wjaaU2dAfif4nsy8MgKAEtaB
-URiRSQCkf2O1+90ZpK3nzPneuAk618GT8hRkhemJ5WixV9VW3pDOJad6jyL6Kv3o
-pY3e+vlFdk2MwmYhZtYqwE22eOerxCHGIkrvW5oMpZXifs+G+KSIZDE54bwhrNo0
-kVwy+JwxwJxIKPg03a5AZb7DxXqzKxRPdGeEssctqZZFb13iS7HrsbbL7rv9T7QS
-EFaCAdsFMif2FYkU+LD9Kq64lgfqZv0d/Hy6AozT5msRAJfTcmfrgqzbGNtXZa3F
-sL/xIq06Y67XIVHN4QmZ5JJ66vPLB6mIfL+BN+LAygDgptJGXOROig==
-=HPL3
+iQEVAwUBQ+eKhqnM4kGH82hDAQKsFAgAkgkDkLhAhJFl/3Ct32iF3UukBboOhloR
+SYd/fgyIxHVXdu+9D0PQ+7kyj/Qk+Rs4xno5et4nBSaT7HwNZYefhEgXzF5MBxhw
+2BXc9oPz6RAHQPQOuQuWE8yqo9FIeVKVj3EZpX6BGmA75GeGSMDVRT0mmJO0zjCR
+oeEnVeVUI/YeiC3oW2Z3tdaFZbu33VJBU6Lz3F41bFn7x3pgtOJxFYh137uJuFzh
+JUM6RDmrueiKlcVZiFrsDFQzgUYkVrIztHbtTK5olLlNdhW+M2KPsN0IERo62tNQ
+XCcDOQ0TAbIJ3hj1161F6b8snCwD8bd2UrbkPjBYgOTmlfsdFUTIcw==
+=bcUu
 -----END PGP SIGNATURE-----

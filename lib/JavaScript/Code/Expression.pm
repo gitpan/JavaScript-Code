@@ -1,23 +1,13 @@
-package JavaScript::Code::Element;
+package JavaScript::Code::Expression;
 
 use strict;
 use vars qw[ $VERSION ];
-use base qw[ JavaScript::Code::Accessor ];
 
 $VERSION = '0.01';
 
 =head1 NAME
 
-JavaScript::Code::Element - a javascript-code element
-
-=cut
-
-sub get_indenting {
-    my ($self, $intend) = @_;
-
-    return '' unless $intend > 0;
-    return '    ' x $intend;
-}
+JavaScript::Code::Expression - a javascript expression
 
 =head1 SEE ALSO
 
@@ -36,3 +26,6 @@ the same terms as Perl itself.
 
 1;
 
+
+
+1;

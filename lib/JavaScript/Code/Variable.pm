@@ -9,7 +9,7 @@ use JavaScript::Code::Type ();
 
 __PACKAGE__->mk_accessors(qw[ name ]);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 =head1 NAME
 
@@ -99,18 +99,21 @@ sub value {
 
 =head2 $self->output( )
 
+Returns the javascript-code for that variable.
+
 =cut
 
 sub output {
-    my ($self) = @_;
+    my $self = shift;
+    my $intend = shift || 0;
 
     my $name = $self->name;
     die "A JavaScript::Code::Variable needs a name." unless $name;
 
-    my $output = "var $name";
+    my $indenting = $self->get_indenting($intend);
+    my $output = $indenting . "var $name";
 
-    my $value = $self->value;
-    if ( defined $value ) {
+    if ( defined( my $value = $self->value ) ) {
         die "Not a 'JavaScript::Code::Type'."
           unless ref $value
           and $value->isa('JavaScript::Code::Type');

@@ -5,6 +5,7 @@ lib/JavaScript/Code/Accessor.pm
 lib/JavaScript/Code/Array.pm
 lib/JavaScript/Code/Block.pm
 lib/JavaScript/Code/Element.pm
+lib/JavaScript/Code/Expression.pm
 lib/JavaScript/Code/Function.pm
 lib/JavaScript/Code/Hash.pm
 lib/JavaScript/Code/Number.pm

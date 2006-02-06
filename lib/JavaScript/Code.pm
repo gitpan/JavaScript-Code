@@ -2,15 +2,13 @@ package JavaScript::Code;
 
 use strict;
 use vars qw[ $VERSION ];
-use base qw[ JavaScript::Code::Accessor ];
+use base qw[ JavaScript::Code::Block ];
 
-__PACKAGE__->mk_accessors(qw[ elements ]);
-
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 =head1 NAME
 
-JavaScript::Code - JavaScript Code Framework
+JavaScript::Code - A JavaScript Code Framework
 
 =head1 SYNOPSIS
 
@@ -32,35 +30,31 @@ JavaScript::Code - JavaScript Code Framework
 
 =head1 DESCRIPTION
 
+Create javascript-code!
+
 =head1 METHODS
 
 =head2 $self->add( $element )
 
+Adds a new element.
+
 =cut
 
-sub add {
-    my ( $self, $element ) = @_;
-
-    die "Not a 'JavaScript::Code::Element'."
-      unless ref $element
-      and $element->isa('JavaScript::Code::Element');
-
-    my $elements = $self->elements || [];
-    push @{$elements}, $element;
-
-    $self->elements($elements);
-}
-
 =head2 $self->elements( )
+
+Returns a ref-array of all added elements.
 
 =cut
 
 =head2 $self->output( )
 
+Returns the javascript-code.
+
 =cut
 
 sub output {
-    my ($self) = @_;
+    my $self = shift;
+    my $intend = shift || 0;
 
     my $output = '';
 
@@ -72,18 +66,32 @@ sub output {
     return $output;
 }
 
-=head2 $self->output_for_html( < %args > )
+=head2 $self->output_for_html( < \%args > )
+
+Returns the javascript-code that can be directly embedded into html-code.
+
+Optimal \%args: Key-value pairs that reprensent attributes that will be associated to the script tag.
+
+    print $code->output_for_html( { language => undef } );
 
 =cut
 
 sub output_for_html {
-    my ( $self, %args ) = @_;
+    my ( $self, $args ) = @_;
 
-    $args{language} ||= 'Javascript';
-    $args{type}     ||= 'text/javascript';
+    $args ||= {};
+    $args->{language} =
+      exists $args->{language}
+      ? $args->{language}
+      : 'Javascript';
+    $args->{type} =
+      exists $args->{type}
+      ? $args->{type}
+      : 'text/javascript';
 
     my $output = '<script';
-    while ( my ( $key, $val ) = each %args ) {
+    while ( my ( $key, $val ) = each %{$args} ) {
+        next unless defined $val;
         $output .= qq~ $key="$val"~;
     }
     $output .= "><!--\n\n";

@@ -1,4 +1,11 @@
 Revision history for Perl extension JavaScript-Code
 
-0.01  Thr Feb 06 04:02 2006
+0.02  Mon Feb 06 18:25 2006
+    - Strings are no inclosed in " instead of '
+    - Documentation added
+    - Block Element implemented
+    - Code is now a Block
+    - Indenting added
+
+0.01  Mon Feb 06 04:02 2006
     - Prove of concept

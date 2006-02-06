@@ -4,7 +4,29 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Type ];
 
-$VERSION = '0.01';
+$VERSION = '0.02';
+
+=head1 NAME
+
+JavaScript::Code::Number - Javascript numbers
+
+=head1 SYNOPSIS
+
+    #!/usr/bin/perl
+
+    use strict;
+    use warnings;
+    use JavaScript::Code::Number;
+
+    my $number = JavaScript::Code::String->new()->value(42);
+
+    print $number->output;
+
+=head1 METHODS
+
+See also the L<JavaScript::Code::Type> documentation.
+
+=cut
 
 sub type {
     return "Number";
@@ -18,5 +40,20 @@ sub output {
 
     return "$value";
 }
+
+=head1 SEE ALSO
+
+L<JavaScript::Code>
+
+=head1 AUTHOR
+
+Sascha Kiefer, C<esskar@cpan.org>
+
+=head1 LICENSE
+
+This library is free software, you can redistribute it and/or modify it under
+the same terms as Perl itself.
+
+=cut
 
 1;
