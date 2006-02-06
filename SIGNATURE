@@ -1,0 +1,49 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.52.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 e6c42be9558cf6e543262377616a52b6e97ded52 Build.PL
+SHA1 f047eb72d48f7558d2db3e1363d3bedd578d653c Changes
+SHA1 8ee2b96e3e8d7a2cdf92cf93ecf240e283c78763 MANIFEST
+SHA1 7f7d8f289651e4369b6b3f21e0da300b03070a59 META.yml
+SHA1 6f85ae5aa6cafa4b38ac7fb6ae41beeba54cf364 Makefile.PL
+SHA1 1135215250bf8ddd5c831caa8337b588fb162753 README
+SHA1 aa3d6b3119e38501907f5661811678aa34a0adcd lib/JavaScript/Code.pm
+SHA1 7ebf31aa259e3a398259045469ca39fb577ac623 lib/JavaScript/Code/Accessor.pm
+SHA1 f4b1e32cf176a923474c8bdd871551d395d34ed9 lib/JavaScript/Code/Array.pm
+SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 lib/JavaScript/Code/Block.pm
+SHA1 c9d4a36d351ffea1cdc5fa252d5e7746c08d2528 lib/JavaScript/Code/Element.pm
+SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 lib/JavaScript/Code/Function.pm
+SHA1 a535fef68d6a8ea901deb3f3512dc9b6953604a7 lib/JavaScript/Code/Hash.pm
+SHA1 6217b842e4db793b17780f47dc574c1f00a25591 lib/JavaScript/Code/Number.pm
+SHA1 7cda5389f11a184418b3f7889ed883af80ea2c0a lib/JavaScript/Code/String.pm
+SHA1 d53cd35f8c4d78317a6a5b4fc15ab6cb44acb957 lib/JavaScript/Code/Type.pm
+SHA1 094ce2995b9c88ce7335b703f6bc7a4638e79b50 lib/JavaScript/Code/Variable.pm
+SHA1 e7449bd745eb81ad6da60d436da977134b830ef4 t/01use.t
+SHA1 86d255a7c9f065a13049108362c949b3e35a4c24 t/02pod.t
+SHA1 e923679a1bbd8eb8f727e46f5906af25de27ec97 t/03podcoverage.t
+SHA1 808061e9989b93018e85c20e6a9815c83778efe6 t/04examples.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (MingW32)
+Comment: GnuPT 2.7
+
+iQEVAwUBQ+a8aanM4kGH82hDAQL2JAf9HyPhN9W/wjaaU2dAfif4nsy8MgKAEtaB
+URiRSQCkf2O1+90ZpK3nzPneuAk618GT8hRkhemJ5WixV9VW3pDOJad6jyL6Kv3o
+pY3e+vlFdk2MwmYhZtYqwE22eOerxCHGIkrvW5oMpZXifs+G+KSIZDE54bwhrNo0
+kVwy+JwxwJxIKPg03a5AZb7DxXqzKxRPdGeEssctqZZFb13iS7HrsbbL7rv9T7QS
+EFaCAdsFMif2FYkU+LD9Kq64lgfqZv0d/Hy6AozT5msRAJfTcmfrgqzbGNtXZa3F
+sL/xIq06Y67XIVHN4QmZ5JJ66vPLB6mIfL+BN+LAygDgptJGXOROig==
+=HPL3
+-----END PGP SIGNATURE-----

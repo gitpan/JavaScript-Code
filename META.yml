@@ -1,0 +1,37 @@
+---
+name: JavaScript-Code
+version: 0.01
+author:
+  - 'Sascha Kiefer, C<esskar@cpan.org>'
+abstract: JavaScript Code Framework
+license: perl
+requires:
+  Class::Accessor::Chained::Fast: 0
+  Scalar::Util: 1.14
+provides:
+  JavaScript::Code:
+    file: lib/JavaScript/Code.pm
+    version: 0.01
+  JavaScript::Code::Accessor:
+    file: lib/JavaScript/Code/Accessor.pm
+  JavaScript::Code::Array:
+    file: lib/JavaScript/Code/Array.pm
+    version: 0.01
+  JavaScript::Code::Element:
+    file: lib/JavaScript/Code/Element.pm
+  JavaScript::Code::Hash:
+    file: lib/JavaScript/Code/Hash.pm
+    version: 0.01
+  JavaScript::Code::Number:
+    file: lib/JavaScript/Code/Number.pm
+    version: 0.01
+  JavaScript::Code::String:
+    file: lib/JavaScript/Code/String.pm
+    version: 0.01
+  JavaScript::Code::Type:
+    file: lib/JavaScript/Code/Type.pm
+    version: 0.01
+  JavaScript::Code::Variable:
+    file: lib/JavaScript/Code/Variable.pm
+    version: 0.01
+generated_by: Module::Build version 0.2611

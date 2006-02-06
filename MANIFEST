@@ -1,0 +1,22 @@
+Build.PL
+Changes
+lib/JavaScript/Code.pm
+lib/JavaScript/Code/Accessor.pm
+lib/JavaScript/Code/Array.pm
+lib/JavaScript/Code/Block.pm
+lib/JavaScript/Code/Element.pm
+lib/JavaScript/Code/Function.pm
+lib/JavaScript/Code/Hash.pm
+lib/JavaScript/Code/Number.pm
+lib/JavaScript/Code/String.pm
+lib/JavaScript/Code/Type.pm
+lib/JavaScript/Code/Variable.pm
+Makefile.PL
+MANIFEST			This list of files
+META.yml
+README
+t/01use.t
+t/02pod.t
+t/03podcoverage.t
+t/04examples.t
+SIGNATURE    Added here by Module::Build

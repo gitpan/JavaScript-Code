@@ -1,0 +1,37 @@
+NAME
+    JavaScript::Code - JavaScript Code Framework
+
+SYNOPSIS
+        #!/usr/bin/perl
+
+        use strict;
+        use warnings;
+        use JavaScript::Code;
+        use JavaScript::Code::Variable;
+
+        my $code = JavaScript::Code->new();
+        my $var  = JavaScript::Code::Variable->new()->name('a')->value("Var!");
+
+        $code->add( $var );
+        $code->add( JavaScript::Code::Variable->new()->name('b')->value(42) );
+
+        print $code->output_for_html;
+
+DESCRIPTION
+METHODS
+  $self->add( $element )
+  $self->elements( )
+  $self->output( )
+  $self->output_for_html( < %args > )
+SEE ALSO
+    JavaScript::MochiKit
+
+    <http://www.perl-community.de>
+
+AUTHOR
+    Sascha Kiefer, "esskar@cpan.org"
+
+LICENSE
+    This library is free software, you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
