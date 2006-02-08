@@ -2,8 +2,13 @@ package JavaScript::Code::Type;
 
 use strict;
 use vars qw[ $VERSION ];
-use base qw[ JavaScript::Code::Accessor ];
+use base qw[
+  JavaScript::Code::Accessor
+  JavaScript::Code::Value
+];
 use Carp;
+
+use overload '""' => sub { shift->output };
 
 __PACKAGE__->mk_accessors(qw[ type value ]);
 
@@ -16,7 +21,7 @@ $VERSION = '0.02';
 
 =head1 NAME
 
-JavaScript::Code::Type - Base class for javascript types
+JavaScript::Code::Type - A JavaScript Type
 
 =head1 SYNOPSIS
 
@@ -38,23 +43,24 @@ JavaScript::Code::Type - Base class for javascript types
 =cut
 
 sub new {
-    my $class = shift;
+    my $this  = shift;
+    my $class = ref($this) || $this;
 
     return $class->SUPER::new(@_)
       unless $class eq __PACKAGE__;
 
     my $args = shift;
 
-    my $via = lc(delete $args->{type} || '')
+    my $via = lc( delete $args->{type} || '' )
       or croak "No type provided.";
 
-    substr($via, 0, 1) = uc substr($via, 0, 1);
+    $via = ucfirst $via;
     $via = "JavaScript::Code::$via";
 
-    eval "require $via"; # make sure, it is loaded
+    eval "require $via";    # make sure, it is loaded
     croak $@ if $@;
 
-    return $via->new($args, @_);
+    return $via->new( $args, @_ );
 }
 
 =head2 $self->type( )

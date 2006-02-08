@@ -4,13 +4,32 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Element ];
 
-__PACKAGE__->mk_accessors(qw[ elements ]);
+__PACKAGE__->mk_ro_accessors(qw[ elements ]);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 =head1 NAME
 
-JavaScript::Code::Block - a block element in javascript
+JavaScript::Code::Block - A JavaScript Block Element
+
+=head1 DESCRIPTION
+
+A block element in javascript is a collection of javascript elements enclosed in brakets.
+
+Example:
+
+    {   // a block starts
+        var a = 42;
+        var b = "21 is just half the truth.";
+
+        { // another block starts
+
+            // ...
+
+        } // another block ends
+
+    }   // a block ends
+
 
 =head1 SYNOPSIS
 
@@ -21,15 +40,26 @@ JavaScript::Code::Block - a block element in javascript
     use JavaScript::Code::Block;
     use JavaScript::Code::Variable;
 
-    my $block = JavaScript::Code::Block->new();
-    my $var   = JavaScript::Code::Variable->new()->name('a')->value("Var!");
+    my $block1 = JavaScript::Code::Block->new();
+    my $var1   = JavaScript::Code::Variable->new()->name('a')->value("Var 1!");
+    my $var2   = JavaScript::Code::Variable->new()->name('b')->value("Var 2!");
 
-    $block->add( $var );
-    $block->add( JavaScript::Code::Variable->new()->name('b')->value(42) );
+    my $block2 = JavaScript::Code::Block->new();
+    my $var3   = JavaScript::Code::Variable->new()->name('c')->value("Var 3!");
 
-    print $block->output;
+    $block1->add( $var1 );
+    $block1->add( $var2 )->add( $block2->add( $var3 ) );
+    $block1->add( JavaScript::Code::Variable->new()->name('d')->value(42) );
+
+    print $block1->output;
 
 =head1 METHODS
+
+=head2 JavaScript::Code::Block->new( )
+
+Creates a new block element.
+
+=cut
 
 =head2 $self->add( $element )
 
@@ -47,10 +77,13 @@ sub add {
     die "Not able to a element of type 'JavaScript::Code'."
       if $element->isa('JavaScript::Code');
 
-    my $elements = $self->elements || [];
-    push @{$elements}, $element;
+    my $elements = $self->{elements} || [];
+    my $clone = $element->clone->parent($self);
+    push @{$elements}, $clone;
 
-    $self->elements($elements);
+    $self->{elements} = $elements;
+
+    return $self;
 }
 
 =head2 $self->elements( )
@@ -66,15 +99,15 @@ Returns the javascript-code block.
 =cut
 
 sub output {
-    my $self = shift;
-    my $intend = shift || 0;
+    my $self  = shift;
+    my $scope = shift || 1;
 
-    my $indenting = $self->get_indenting($intend);
-    my $output = $indenting . "{\n";
+    my $indenting = $self->get_indenting($scope);
+    my $output    = $indenting . "{\n";
 
     my $elements = $self->elements || [];
     foreach my $element ( @{$elements} ) {
-        $output .= $element->output($intend + 1);
+        $output .= $element->output( $scope + 1 );
     }
 
     $output .= $indenting . "}\n";

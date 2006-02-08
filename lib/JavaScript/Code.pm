@@ -4,7 +4,7 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Block ];
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 =head1 NAME
 
@@ -19,12 +19,42 @@ JavaScript::Code - A JavaScript Code Framework
     use JavaScript::Code;
     use JavaScript::Code::Variable;
 
+    # create the code object
     my $code = JavaScript::Code->new();
-    my $var  = JavaScript::Code::Variable->new()->name('a')->value("Var!");
 
-    $code->add( $var );
-    $code->add( JavaScript::Code::Variable->new()->name('b')->value(42) );
+    # create a code block
+    my $block = JavaScript::Code::Block->new();
 
+    # create some variables
+    my $var1 = JavaScript::Code::Variable->new()->name('a');
+    my $var2 = JavaScript::Code::Variable->new()->name('b')->value(42);
+    my $var3 = JavaScript::Code::Variable->new()->name('c')->value(23);
+    my $var4 = JavaScript::Code::Variable->new()->name('x')->declared( 1 ); # could have been declared in a other script
+
+    # add some of them to the code block
+    $block->add( $var2 )->add( $var3 );
+
+    # create some numbers
+    my $x1 = JavaScript::Code::Number->new()->value( 10 );
+    my $x2 = JavaScript::Code::Number->new()->value( 20 );
+
+    # build expressions
+    my $c1 = $var2 - ($x1 + $x2 + $x1->value(30)) * $x2->value(40);
+    my $c2 = $c1 * $var3;
+
+    # assign a expression to a variable and add it to your code block
+    $block->add( JavaScript::Code::Variable->new()->name('d')->value( $c2 ) );
+
+    # add more stuff to your code block
+    $block->add( JavaScript::Code::Block->new()->add( $var1->value("Bar!") ) );
+    $block->add( $var1->clone->value("Foo!") ); # clone 'a' and give it a new value
+
+    # add your block and other stuff to the code object
+    $code->add( $var4->value( 4711 ) )->add( $var1->value("Perl!") );
+    $code->add( $block );
+    $code->add( $var2->value(21) ); # 'b' with value 21 (note the different scope)
+
+    # output to be embedded in your html code
     print $code->output_for_html;
 
 
@@ -53,7 +83,7 @@ Returns the javascript-code.
 =cut
 
 sub output {
-    my $self = shift;
+    my $self   = shift;
     my $intend = shift || 0;
 
     my $output = '';

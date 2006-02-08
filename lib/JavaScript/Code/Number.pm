@@ -2,9 +2,10 @@ package JavaScript::Code::Number;
 
 use strict;
 use vars qw[ $VERSION ];
-use base qw[ JavaScript::Code::Type ];
+use base
+  qw[ JavaScript::Code::Type JavaScript::Code::Expression::Node::Arithmetic ];
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 =head1 NAME
 
@@ -36,7 +37,7 @@ sub output {
     my ($self) = @_;
 
     my $value = $self->value;
-    $value += 0;
+    $value += 0;    # make sure it is a number
 
     return "$value";
 }

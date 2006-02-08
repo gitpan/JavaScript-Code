@@ -2,18 +2,27 @@ package JavaScript::Code::Variable;
 
 use strict;
 use vars qw[ $VERSION ];
-use base qw[ JavaScript::Code::Element ];
+use base qw[
+  JavaScript::Code::Element
+  JavaScript::Code::Value
+  JavaScript::Code::Expression::Node::Arithmetic
+];
 
 use Scalar::Util           ();
 use JavaScript::Code::Type ();
 
-__PACKAGE__->mk_accessors(qw[ name ]);
+use overload
+  '""' => sub { shift->name },
+  'eq' => \&same,
+  '==' => \&equal;
 
-$VERSION = '0.02';
+__PACKAGE__->mk_accessors(qw[ name declared ]);
+
+$VERSION = '0.03';
 
 =head1 NAME
 
-JavaScript::Code - JavaScript Code Framework
+JavaScript::Code::Variable - A JavaScript Variable Element
 
 =head1 SYNOPSIS
 
@@ -31,7 +40,7 @@ JavaScript::Code - JavaScript Code Framework
     my $number = JavaScript::Code::Variable->new()->name('b')->value( 288957 );
     print $number->output;
 
-    my $strnumber = JavaScript::Code::Variable->new( { name => 'c' } );
+    my $strnumber = JavaScript::Code::Variable->new( name => 'c' );
     $strnumber->value( JavaScript::Code::String->new(value => 288957) );
     print $strnumber->output;
 
@@ -42,7 +51,26 @@ JavaScript::Code - JavaScript Code Framework
 
 =head1 DESCRIPTION
 
+A JavaScript Variable Element Class
+
+Example:
+
+    var a = 42;      // Variable a with a nummeric value of 42
+    var b = "Test!"; // Variable b with a string value of "Test!"
+
 =head1 METHODS
+
+=cut
+
+sub new {
+    my $obj   = shift;
+    my $class = ref $obj || $obj;
+
+    my $self = $class->SUPER::new(@_);
+    $self->declared(0);
+
+    return $self;
+}
 
 =head2 $self->name( $name )
 
@@ -77,7 +105,7 @@ sub value {
               ? JavaScript::Code::Number->new( { value => $value } )
               : JavaScript::Code::String->new( { value => $value } );
         }
-        elsif ( $value->isa('JavaScript::Code::Type') ) {
+        elsif ( $value->isa('JavaScript::Code::Value') ) {
             $object = $value;
         }
 
@@ -92,10 +120,16 @@ sub value {
         my $value = $self->{value};
         $self->value($value)
           unless ref $value
-          and $value->isa('JavaScript::Code::Type');
+          and $value->isa('JavaScript::Code::Value');
         return $self->{value};
     }
 }
+
+=head2 $self->declared( 1|0 )
+
+Gets or sets whether or not the variable has priviously been declared.
+
+=cut
 
 =head2 $self->output( )
 
@@ -104,19 +138,25 @@ Returns the javascript-code for that variable.
 =cut
 
 sub output {
-    my $self = shift;
-    my $intend = shift || 0;
+    my $self  = shift;
+    my $scope = shift || 1;
 
     my $name = $self->name;
     die "A JavaScript::Code::Variable needs a name." unless $name;
 
-    my $indenting = $self->get_indenting($intend);
-    my $output = $indenting . "var $name";
+    my $indenting = $self->get_indenting($scope);
+    my $output    = '';
+
+    my $declared = $self->declared || $self->exists_in_parent($self);
+
+    $output .= $indenting;
+    $output .= 'var ' unless $declared;
+    $output .= $name;
 
     if ( defined( my $value = $self->value ) ) {
-        die "Not a 'JavaScript::Code::Type'."
+        die "Not a 'JavaScript::Code::Value'."
           unless ref $value
-          and $value->isa('JavaScript::Code::Type');
+          and $value->isa('JavaScript::Code::Value');
         $output .= ' = ';
         $output .= $value->output;
     }
@@ -124,6 +164,32 @@ sub output {
     $output .= ";\n";
 
     return $output;
+}
+
+=head2 $self->same( $var )
+
+Two variables are the same if they have the same name.
+
+=cut
+
+sub same {
+    my ( $self, $other ) = @_;
+
+    return 0 unless $other->isa('JavaScript::Code::Variable');
+    return $self->name eq $other->name;
+}
+
+=head2 $self->equal( $var )
+
+Two variables are equal if they have the same value.
+
+=cut
+
+sub equal {
+    my ( $self, $other ) = @_;
+
+    return 0 unless $other->isa('JavaScript::Code::Variable');
+    return $self->value eq $other->value;
 }
 
 =head1 SEE ALSO

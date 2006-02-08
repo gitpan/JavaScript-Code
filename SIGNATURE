@@ -15,23 +15,33 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 e6c42be9558cf6e543262377616a52b6e97ded52 Build.PL
-SHA1 8fd548691b59221cd6d579ca7915062b6bda5d4c Changes
-SHA1 52843a932769b414e68bd984fe586c4f87186e75 MANIFEST
-SHA1 c2e20f20ab990a1e5394c393ebaa28e89fa97a27 META.yml
+SHA1 5fa5eeb3dcc89ca59e1d69e1f23483b352af176b Changes
+SHA1 b30d49c94cf5f256a49fec3b747627177aa8da32 MANIFEST
+SHA1 9e431ae08d72185079caa624fff4c79a06f8a220 META.yml
 SHA1 6f85ae5aa6cafa4b38ac7fb6ae41beeba54cf364 Makefile.PL
-SHA1 64c5f1e7021879f526b9f96a6643a44b86c1f463 README
-SHA1 c0d758137e960a123bf5e418edd6291ecc11a47a lib/JavaScript/Code.pm
-SHA1 7ebf31aa259e3a398259045469ca39fb577ac623 lib/JavaScript/Code/Accessor.pm
-SHA1 f4b1e32cf176a923474c8bdd871551d395d34ed9 lib/JavaScript/Code/Array.pm
-SHA1 625e2419748bd4888a7014c63c05419ab118aa74 lib/JavaScript/Code/Block.pm
-SHA1 c4d32f408049b96bf712834ec77cebce1eec0a04 lib/JavaScript/Code/Element.pm
-SHA1 a1896e3a7bec97d2327ba60d834391db7f0e85b6 lib/JavaScript/Code/Expression.pm
+SHA1 993ab4ea02b639c235b2baf909a05d7965219203 README
+SHA1 47163adc0d65cc20ce8bd6062f83b70e28aa43c3 lib/JavaScript/Code.pm
+SHA1 5a08fe6ac8d40130b2b75bfefda2f427ef79bfd3 lib/JavaScript/Code/Accessor.pm
+SHA1 a8220ca6b05a200c5023e4a17fb89af072a23353 lib/JavaScript/Code/Array.pm
+SHA1 2c253b36ea0bd7675cf414e34b14f77ffdaabe0c lib/JavaScript/Code/Block.pm
+SHA1 e19bc0822b9d100b3b2002348d0704deebca44ac lib/JavaScript/Code/Element.pm
+SHA1 7c20c963d0ab99ec32303bacbe92998c8bf9450c lib/JavaScript/Code/Expression.pm
+SHA1 9adf5d22261592c2a7bc4b59030427764b91d2f3 lib/JavaScript/Code/Expression/Arithmetic.pm
+SHA1 13271289978a32c4423ac0ec08c81f63bbe1853e lib/JavaScript/Code/Expression/Node.pm
+SHA1 0f0636f8be87dbbdf627fe15789b9f544a0cf22d lib/JavaScript/Code/Expression/Node/Arithmetic.pm
+SHA1 64b31147c21c691db848c973859085f3a41d0837 lib/JavaScript/Code/Expression/Op.pm
+SHA1 d720d82585142ad05ae698c5c99fcb41857b20a3 lib/JavaScript/Code/Expression/Op/Addition.pm
+SHA1 a86869b4076cb72d0f964969f97abeb157824885 lib/JavaScript/Code/Expression/Op/Division.pm
+SHA1 b241a18982db3801174d2af54387ba6535734ee7 lib/JavaScript/Code/Expression/Op/Multiplication.pm
+SHA1 da5a5a3e077b7d263f88d8c8c129435603758e27 lib/JavaScript/Code/Expression/Op/Subtraction.pm
+SHA1 81964880c86c0f21363a71e34b16fb46f54465a8 lib/JavaScript/Code/Expression/Op/Term.pm
 SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 lib/JavaScript/Code/Function.pm
-SHA1 a535fef68d6a8ea901deb3f3512dc9b6953604a7 lib/JavaScript/Code/Hash.pm
-SHA1 70f78a864dd32cda98c2218604f4b488514df238 lib/JavaScript/Code/Number.pm
-SHA1 42c3c146150dad19d3d603bb59d21874621a813a lib/JavaScript/Code/String.pm
-SHA1 142a0bf7720a1bf2b361ce3c72f17cc0be7fa1c7 lib/JavaScript/Code/Type.pm
-SHA1 cd311b6cfe9309ae4bd517ebf051042dd92ac847 lib/JavaScript/Code/Variable.pm
+SHA1 a8dcc3734df2d5d78c641bfb2f18acf46f018d22 lib/JavaScript/Code/Hash.pm
+SHA1 38ff43c01b5c2dbc48df3ef47da788983f50308c lib/JavaScript/Code/Number.pm
+SHA1 9f781f22c6b59c43f203b2cf50322fb6218156fb lib/JavaScript/Code/String.pm
+SHA1 ddfc538121e10c1ebe0b1675809e77feb4c1bba1 lib/JavaScript/Code/Type.pm
+SHA1 b41a400b83f5bddc9c9b904f4bf66975686d7094 lib/JavaScript/Code/Value.pm
+SHA1 c94f79c0973815bb63abede6bb04a694b17a1528 lib/JavaScript/Code/Variable.pm
 SHA1 e7449bd745eb81ad6da60d436da977134b830ef4 t/01use.t
 SHA1 86d255a7c9f065a13049108362c949b3e35a4c24 t/02pod.t
 SHA1 e923679a1bbd8eb8f727e46f5906af25de27ec97 t/03podcoverage.t
@@ -40,11 +50,11 @@ SHA1 ea0eaf98577d29c491d48db3bfc69e334393e456 t/04examples.t
 Version: GnuPG v1.2.4 (MingW32)
 Comment: GnuPT 2.7
 
-iQEVAwUBQ+eKhqnM4kGH82hDAQKsFAgAkgkDkLhAhJFl/3Ct32iF3UukBboOhloR
-SYd/fgyIxHVXdu+9D0PQ+7kyj/Qk+Rs4xno5et4nBSaT7HwNZYefhEgXzF5MBxhw
-2BXc9oPz6RAHQPQOuQuWE8yqo9FIeVKVj3EZpX6BGmA75GeGSMDVRT0mmJO0zjCR
-oeEnVeVUI/YeiC3oW2Z3tdaFZbu33VJBU6Lz3F41bFn7x3pgtOJxFYh137uJuFzh
-JUM6RDmrueiKlcVZiFrsDFQzgUYkVrIztHbtTK5olLlNdhW+M2KPsN0IERo62tNQ
-XCcDOQ0TAbIJ3hj1161F6b8snCwD8bd2UrbkPjBYgOTmlfsdFUTIcw==
-=bcUu
+iQEVAwUBQ+k9m6nM4kGH82hDAQKDaQf/boVwqVTJPz6CuNyCmOHRng4RrJpnfvnW
+dNidDvyJxP17wSQP9TFh09CIyTfP0pn3QaYse30ynt91Lm73kJeSrJzmvOqE6mXC
+mTSEFTGgsBYb5LO7RAVIO711Dg2lSJPiLjU/oN3Hr3ABaTy+j5VfQb6ZtONqcLfJ
+61xlSwZlmBMQV3VxIQ3dYBUqrcF42yRzHttxtKjZgdkelHzPVDcxd3mowacg1Pjw
+evek9rIlyu+lTQ2c5uI+yBxkczVxwf6mBD/SQYozhVYQFnNVXwKMLOxzrvsKXru8
+KILssk1VdA5cqVcXl3TBn7P98eecuu2wOdhX6kWJa/jX5bNYQFnQ+Q==
+=5wvZ
 -----END PGP SIGNATURE-----
