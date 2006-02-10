@@ -18,7 +18,7 @@ use overload
 
 __PACKAGE__->mk_accessors(qw[ name declared ]);
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 =head1 NAME
 
@@ -67,7 +67,6 @@ sub new {
     my $class = ref $obj || $obj;
 
     my $self = $class->SUPER::new(@_);
-    $self->declared(0);
 
     return $self;
 }
@@ -88,29 +87,7 @@ sub value {
     my $self = shift;
     if (@_) {
 
-        my $value   = shift;
-        my $reftype = ref $value;
-
-        my $object;
-        if ( $reftype eq 'ARRAY' ) {
-            $object = JavaScript::Code::Array->new( { value => $value } );
-        }
-        elsif ( $reftype eq 'HASH' ) {
-            $object = JavaScript::Code::Hash->new( { value => $value } );
-        }
-        elsif ( $reftype eq 'SCALAR' or $reftype eq '' ) {
-            $value = $reftype eq 'SCALAR' ? ${$value} : $value;
-            $object =
-              Scalar::Util::looks_like_number($value)
-              ? JavaScript::Code::Number->new( { value => $value } )
-              : JavaScript::Code::String->new( { value => $value } );
-        }
-        elsif ( $value->isa('JavaScript::Code::Value') ) {
-            $object = $value;
-        }
-
-        die "Unexpected type '$reftype'." unless defined $object;
-
+        my $object = JavaScript::Code::Type->build( value => shift );
         $self->{value} = $object;
 
         return $self;
@@ -125,9 +102,13 @@ sub value {
     }
 }
 
-=head2 $self->declared( 1|0 )
+=head2 $self->declared( undef | 0 | 1 )
 
-Gets or sets whether or not the variable has priviously been declared.
+If set to undef, the module will check the scope to decide whether or not the variable should be declared.
+
+If set to 0, the module is undeclared und will be declared in its context.
+
+If set to 1, the variable will to be declared in its context.
 
 =cut
 
@@ -142,19 +123,23 @@ sub output {
     my $scope = shift || 1;
 
     my $name = $self->name;
-    die "A JavaScript::Code::Variable needs a name." unless $name;
+    Carp::croak "A JavaScript::Code::Variable needs a name."
+      unless $name;
 
     my $indenting = $self->get_indenting($scope);
     my $output    = '';
 
-    my $declared = $self->declared || $self->exists_in_parent($self);
+    my $declared =
+      defined $self->declared
+      ? $self->declared
+      : $self->exists_in_parent($self);
 
     $output .= $indenting;
     $output .= 'var ' unless $declared;
     $output .= $name;
 
     if ( defined( my $value = $self->value ) ) {
-        die "Not a 'JavaScript::Code::Value'."
+        Carp::croak "Not a 'JavaScript::Code::Value'."
           unless ref $value
           and $value->isa('JavaScript::Code::Value');
         $output .= ' = ';

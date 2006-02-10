@@ -75,6 +75,43 @@ Gets or sets the associated value.
 
 =cut
 
+sub build {
+    my $this  = shift;
+    my $class = ref($this) || $this;
+
+    my $ref = @_ ? Scalar::Util::reftype( $_[0] ) || '' : '';
+
+    my %args  = $ref eq 'HASH' ? %{ shift() } : @_;
+    my $value = $args{value};
+
+    my $object;
+    if ( defined $value ) {
+
+        my $reftype = ref $value;
+
+        if ( $reftype eq 'ARRAY' ) {
+            $object = JavaScript::Code::Array->new( { value => $value } );
+        }
+        elsif ( $reftype eq 'HASH' ) {
+            $object = JavaScript::Code::Hash->new( { value => $value } );
+        }
+        elsif ( $reftype eq 'SCALAR' or $reftype eq '' ) {
+            $value = $reftype eq 'SCALAR' ? ${$value} : $value;
+            $object =
+              Scalar::Util::looks_like_number($value)
+              ? JavaScript::Code::Number->new( { value => $value } )
+              : JavaScript::Code::String->new( { value => $value } );
+        }
+        elsif ( $value->isa('JavaScript::Code::Value') ) {
+            $object = $value;
+        }
+
+        Carp::croak "Unexpected type '$reftype'." unless defined $object;
+    }
+
+    return $object;
+}
+
 =head2 $self->output( )
 
 Returns the javascript-code for that type.

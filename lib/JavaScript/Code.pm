@@ -4,7 +4,7 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Block ];
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 =head1 NAME
 
@@ -30,9 +30,10 @@ JavaScript::Code - A JavaScript Code Framework
     my $var2 = JavaScript::Code::Variable->new()->name('b')->value(42);
     my $var3 = JavaScript::Code::Variable->new()->name('c')->value(23);
     my $var4 = JavaScript::Code::Variable->new()->name('x')->declared( 1 ); # could have been declared in a other script
+    my $var5 = JavaScript::Code::Variable->new()->name('y')->value( ['test', 'uhu', $var4] );
 
     # add some of them to the code block
-    $block->add( $var2 )->add( $var3 );
+    $block->add( [ $var2, $var3] );
 
     # create some numbers
     my $x1 = JavaScript::Code::Number->new()->value( 10 );
@@ -50,9 +51,11 @@ JavaScript::Code - A JavaScript Code Framework
     $block->add( $var1->clone->value("Foo!") ); # clone 'a' and give it a new value
 
     # add your block and other stuff to the code object
-    $code->add( $var4->value( 4711 ) )->add( $var1->value("Perl!") );
+    $code->add( [ $var4->value( 4711 ), $var1->value( "Perl!" ) ] );
     $code->add( $block );
     $code->add( $var2->value(21) ); # 'b' with value 21 (note the different scope)
+    $code->add( $var5 );
+    $code->add_variable( name => 'c', value => 'Larry' );
 
     # output to be embedded in your html code
     print $code->output_for_html;
@@ -88,7 +91,7 @@ sub output {
 
     my $output = '';
 
-    my $elements = $self->elements || [];
+    my $elements = $self->elements;
     foreach my $element ( @{$elements} ) {
         $output .= $element->output;
     }

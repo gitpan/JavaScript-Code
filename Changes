@@ -1,5 +1,12 @@
 Revision history for Perl extension JavaScript-Code
 
+0.04  Fri Feb 10 02:04 2006
+    - Cleanup
+    - Array implemented
+    - JavaScript::Code::Block::add can now handle more than one element
+    - JavaScript::Code::Block::declared is undef by default (was 0), see doc
+    - JavaScript::Code::Block::add_variable
+
 0.03  Wed Feb 08 01:26 2006
     - Arithmetic expressions +, -, *, /
     - Declared and undelared variables

@@ -4,7 +4,6 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ Clone ];
 
-
 $VERSION = '0.01';
 
 =head1 NAME

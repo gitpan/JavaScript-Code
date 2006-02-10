@@ -3,10 +3,11 @@ package JavaScript::Code::Accessor;
 use strict;
 use vars qw[ $VERSION ];
 use base qw[ Class::Accessor::Chained::Fast ];
+use Carp ();
 
 use Scalar::Util ();
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 =head1 NAME
 
@@ -22,9 +23,9 @@ Accessor Class
 
 =head1 METHDOS
 
-=head2 JavaScript::Code::Accessor->new( \%args )
+=head2 JavaScript::Code::Accessor->new( %args | \%args )
 
-=head2 JavaScript::Code::Accessor->new( %args )
+Takes a hash or a hashref as initialization arguments.
 
 =cut
 

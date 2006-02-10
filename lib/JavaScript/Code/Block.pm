@@ -4,9 +4,11 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Element ];
 
+use JavaScript::Code::Variable ();
+
 __PACKAGE__->mk_ro_accessors(qw[ elements ]);
 
-$VERSION = '0.02';
+$VERSION = '0.04';
 
 =head1 NAME
 
@@ -41,7 +43,7 @@ Example:
     use JavaScript::Code::Variable;
 
     my $block1 = JavaScript::Code::Block->new();
-    my $var1   = JavaScript::Code::Variable->new()->name('a')->value("Var 1!");
+    my $var1   = JavaScript::Code::Variable->new( name => 'a', value => "Var 1!" );
     my $var2   = JavaScript::Code::Variable->new()->name('b')->value("Var 2!");
 
     my $block2 = JavaScript::Code::Block->new();
@@ -55,35 +57,66 @@ Example:
 
 =head1 METHODS
 
-=head2 JavaScript::Code::Block->new( )
-
-Creates a new block element.
-
 =cut
 
-=head2 $self->add( $element )
+sub new {
+    my $this  = shift;
+    my $class = ref($this) || $this;
 
-Adds a new element to the block
+    my $self = $class->SUPER::new(@_);
+
+    # cleanup the elements
+    my $array = delete $self->{elements};
+    $self->{elements} = [];
+    $self->add($array) if defined $array;
+
+    return $self;
+}
+
+=head2 $self->add( $element | \@elements )
+
+Adds one or more new element(s) to the block.
 
 =cut
 
 sub add {
-    my ( $self, $element ) = @_;
+    my ( $self, $array ) = @_;
 
-    die "Not a 'JavaScript::Code::Element'."
-      unless ref $element
-      and $element->isa('JavaScript::Code::Element');
+    Carp::croak 'Nothing to add.'
+      unless defined $array;
 
-    die "Not able to a element of type 'JavaScript::Code'."
-      if $element->isa('JavaScript::Code');
+    $array = [$array] unless ref $array eq 'ARRAY';
 
-    my $elements = $self->{elements} || [];
-    my $clone = $element->clone->parent($self);
-    push @{$elements}, $clone;
+    my @elements = ();
+    foreach my $element ( @{$array} ) {
 
-    $self->{elements} = $elements;
+        Carp::croak "Not a 'JavaScript::Code::Element'."
+          unless ref $element
+          and $element->isa('JavaScript::Code::Element');
+
+        Carp::croak "Not able to a element of type 'JavaScript::Code'."
+          if $element->isa('JavaScript::Code');
+
+        push @elements, $element->clone->parent($self);
+    }
+
+    push @{ $self->{elements} }, @elements;
 
     return $self;
+}
+
+=head2 $self->add_variable( %args | \%args )
+
+Creates a variable using the arguments and adds it to the the block.
+
+=cut
+
+sub add_variable {
+    my $self = shift;
+
+    my $var = JavaScript::Code::Variable->new( @_ );
+
+    return $self->add( $var );
 }
 
 =head2 $self->elements( )
@@ -105,7 +138,7 @@ sub output {
     my $indenting = $self->get_indenting($scope);
     my $output    = $indenting . "{\n";
 
-    my $elements = $self->elements || [];
+    my $elements = $self->elements;
     foreach my $element ( @{$elements} ) {
         $output .= $element->output( $scope + 1 );
     }

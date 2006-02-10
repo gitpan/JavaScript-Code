@@ -5,11 +5,11 @@ use vars qw[ $VERSION ];
 use base
   qw[ JavaScript::Code::Type JavaScript::Code::Expression::Node::Arithmetic ];
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 =head1 NAME
 
-JavaScript::Code::Number - Javascript numbers
+JavaScript::Code::Number - A JavaScript Number Type
 
 =head1 SYNOPSIS
 
@@ -19,7 +19,7 @@ JavaScript::Code::Number - Javascript numbers
     use warnings;
     use JavaScript::Code::Number;
 
-    my $number = JavaScript::Code::String->new()->value(42);
+    my $number = JavaScript::Code::String->new( value => 42 );
 
     print $number->output;
 

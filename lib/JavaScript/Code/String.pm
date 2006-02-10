@@ -4,11 +4,11 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Type ];
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 =head1 NAME
 
-JavaScript::Code::String - Javascript strings
+JavaScript::Code::String - A JavaScript String Type
 
 =head1 SYNOPSIS
 

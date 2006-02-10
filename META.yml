@@ -1,6 +1,6 @@
 ---
 name: JavaScript-Code
-version: 0.03
+version: 0.04
 author:
   - 'Sascha Kiefer, C<esskar@cpan.org>'
 abstract: A JavaScript Code Framework
@@ -11,16 +11,16 @@ requires:
 provides:
   JavaScript::Code:
     file: lib/JavaScript/Code.pm
-    version: 0.03
+    version: 0.04
   JavaScript::Code::Accessor:
     file: lib/JavaScript/Code/Accessor.pm
-    version: 0.02
+    version: 0.03
   JavaScript::Code::Array:
     file: lib/JavaScript/Code/Array.pm
-    version: 0.01
+    version: 0.02
   JavaScript::Code::Block:
     file: lib/JavaScript/Code/Block.pm
-    version: 0.02
+    version: 0.04
   JavaScript::Code::Element:
     file: lib/JavaScript/Code/Element.pm
     version: 0.02
@@ -59,10 +59,10 @@ provides:
     version: 0.01
   JavaScript::Code::Number:
     file: lib/JavaScript/Code/Number.pm
-    version: 0.03
+    version: 0.04
   JavaScript::Code::String:
     file: lib/JavaScript/Code/String.pm
-    version: 0.02
+    version: 0.03
   JavaScript::Code::Type:
     file: lib/JavaScript/Code/Type.pm
     version: 0.02
@@ -71,5 +71,5 @@ provides:
     version: 0.01
   JavaScript::Code::Variable:
     file: lib/JavaScript/Code/Variable.pm
-    version: 0.03
+    version: 0.04
 generated_by: Module::Build version 0.2611
