@@ -12,9 +12,15 @@ use overload
   '*' => \&multiplication,
   '/' => \&division;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
-=head2 $self->add( ... )
+=head1 NAME
+
+JavaScript::Code::Expression::Node::Arithmetic - A Node For JavaScript Arithmetic Expressions
+
+=head1 METHODS
+
+=head2 $self->addition( ... )
 
 =cut
 
@@ -46,4 +52,20 @@ sub division {
     return JavaScript::Code::Expression::Arithmetic::division(@_);
 }
 
+=head1 SEE ALSO
+
+L<JavaScript::Code>
+
+=head1 AUTHOR
+
+Sascha Kiefer, C<esskar@cpan.org>
+
+=head1 LICENSE
+
+This library is free software, you can redistribute it and/or modify it under
+the same terms as Perl itself.
+
+=cut
+
 1;
+

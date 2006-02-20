@@ -50,7 +50,7 @@ Add one or more element(s) to the end of array.
 sub push_back {
     my ( $self, $array ) = @_;
 
-    Carp::croak 'Nothing to add.'
+    die 'Nothing to add.'
       unless defined $array;
 
     $array = [$array] unless ref $array eq 'ARRAY';
@@ -61,12 +61,12 @@ sub push_back {
         $value = JavaScript::Code::Type->build( value => $value )
           unless ref $value;
 
-        Carp::croak "'$value' is not a 'JavaScript::Code::Value'."
+        die "'$value' is not a 'JavaScript::Code::Value'."
           unless ref $value
           and $value->isa('JavaScript::Code::Value');
 
         foreach my $t (qw[ JavaScript::Code::Array JavaScript::Code::Hash ]) {
-            Carp::croak "Can not add '$t'." if $value->isa($t);
+            die "Can not add '$t'." if $value->isa($t);
         }
 
         push @{$elements}, $value;
@@ -89,13 +89,13 @@ sub at {
     my $self = shift;
     my $ndx  = shift || 0;
 
-    Carp::croak "Out of range."
+    die "Out of range."
       if $ndx >= $self->length;
 
     if (@_) {
         my $value = shift;
 
-        Carp::croak "'$value' is not a 'JavaScript::Code::Value'."
+        die "'$value' is not a 'JavaScript::Code::Value'."
           unless ref $value
           and $value->isa('JavaScript::Code::Value');
 

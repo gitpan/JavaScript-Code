@@ -4,7 +4,7 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Type ];
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 =head1 NAME
 
@@ -36,7 +36,7 @@ sub output {
     my ($self) = @_;
 
     my $value = $self->value;
-    $value =~ s!\"!\\\"!g;
+    $value =~ s{\"}{\\\"}g;
 
     return qq~"$value"~;
 }

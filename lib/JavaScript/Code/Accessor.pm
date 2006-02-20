@@ -7,11 +7,11 @@ use Carp ();
 
 use Scalar::Util ();
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 =head1 NAME
 
-JavaScript::Code::Accessor - Accessor Class
+JavaScript::Code::Accessor - A Accessor Class
 
 =head2 SYNOPSIS
 
@@ -33,14 +33,21 @@ sub new {
     my $obj   = shift;
     my $class = ref $obj || $obj;
 
-    my $ref = @_ ? Scalar::Util::reftype( $_[0] ) || '' : '';
+    return $class->SUPER::new( $class->args(@_) );
+}
 
+sub args {
+    my $self = shift;
+
+    return {} unless @_;
+
+    my $ref = @_ ? Scalar::Util::reftype( $_[0] ) || '' : '';
     my %args =
       $ref eq 'HASH'
       ? %{ shift() }
       : @_;
 
-    return $class->SUPER::new( \%args );
+    return \%args;
 }
 
 =head1 SEE ALSO

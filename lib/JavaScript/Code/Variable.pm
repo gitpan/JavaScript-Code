@@ -12,13 +12,13 @@ use Scalar::Util           ();
 use JavaScript::Code::Type ();
 
 use overload
-  '""' => sub { shift->name },
+  '""' => sub { shift->full_name },
   'eq' => \&same,
   '==' => \&equal;
 
-__PACKAGE__->mk_accessors(qw[ name declared ]);
+__PACKAGE__->mk_accessors(qw[ index name declared ref ]);
 
-$VERSION = '0.04';
+$VERSION = '0.05';
 
 =head1 NAME
 
@@ -67,6 +67,7 @@ sub new {
     my $class = ref $obj || $obj;
 
     my $self = $class->SUPER::new(@_);
+    $self->value( $self->{value} );
 
     return $self;
 }
@@ -76,6 +77,28 @@ sub new {
 Gets or sets the name of the variable.
 
 =cut
+
+=head2 $self->full_name( )
+
+Gets the full name, that is, the name including the any index information
+
+=cut
+
+sub full_name {
+    my $self = shift;
+
+    my $name = $self->name;
+    die "No name defined."
+      unless $name;
+
+    die "Not a valid 'JavaScript::Code::Variable' name: '$name'"
+      unless $self->is_valid_name($name);
+
+    $name .= "[" . $self->index . "]"
+      if defined $self->index;
+
+    return $name;
+}
 
 =head2 $self->value( $value )
 
@@ -87,8 +110,22 @@ sub value {
     my $self = shift;
     if (@_) {
 
-        my $object = JavaScript::Code::Type->build( value => shift );
-        $self->{value} = $object;
+        my %args = ();
+        if ( @_ == 1 ) {
+            if ( ref $_[0] eq 'HASH' ) {
+                %args = %{ $_[0] };
+            }
+            else {
+                $args{value} = $_[0];
+            }
+        }
+        else {
+            %args = @_;
+        }
+
+        $self->{value} =
+          JavaScript::Code::Type->build( value => delete $args{value} );
+        $self->{index} = $args{index} if exists $args{index};
 
         return $self;
     }
@@ -122,12 +159,15 @@ sub output {
     my $self  = shift;
     my $scope = shift || 1;
 
-    my $name = $self->name;
-    Carp::croak "A JavaScript::Code::Variable needs a name."
+    my $name = $self->full_name;
+    die "A 'JavaScript::Code::Variable' needs a name."
       unless $name;
 
     my $indenting = $self->get_indenting($scope);
     my $output    = '';
+
+    $self->declared(1)
+      if $name =~ m!\[.*\]$!;
 
     my $declared =
       defined $self->declared
@@ -139,7 +179,7 @@ sub output {
     $output .= $name;
 
     if ( defined( my $value = $self->value ) ) {
-        Carp::croak "Not a 'JavaScript::Code::Value'."
+        die "Not a 'JavaScript::Code::Value'."
           unless ref $value
           and $value->isa('JavaScript::Code::Value');
         $output .= ' = ';

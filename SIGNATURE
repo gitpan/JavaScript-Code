@@ -15,33 +15,48 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 e6c42be9558cf6e543262377616a52b6e97ded52 Build.PL
-SHA1 2e155121bc61e42c2fcbc46e5cbce8667970695a Changes
-SHA1 b30d49c94cf5f256a49fec3b747627177aa8da32 MANIFEST
-SHA1 ed5bca3361a7bc43882478754e2c2f28eb2b16c4 META.yml
+SHA1 0fa1e164b25780e690d6509fd750335facd1324f Changes
+SHA1 91a465ef0fa4d977fb2b6383b4dc046c57c7f3c6 MANIFEST
+SHA1 6b3a6210c5e7d78bf8e0c0511928b5c8d054c54a META.yml
 SHA1 6f85ae5aa6cafa4b38ac7fb6ae41beeba54cf364 Makefile.PL
-SHA1 a136ed6d79e0a990202ca9a2ec9fe2700f1b0a71 README
-SHA1 50e3180749905d873105e303e2ad6d95d407da7e lib/JavaScript/Code.pm
-SHA1 585c08d0684851c146911ecffd9c69257a37d13b lib/JavaScript/Code/Accessor.pm
-SHA1 f54c19508464249bb60beeb52835ce3b6dd6ed12 lib/JavaScript/Code/Array.pm
-SHA1 fa6b6ecaa1febb88a5e032a492e51d5b4e8a515d lib/JavaScript/Code/Block.pm
-SHA1 e19bc0822b9d100b3b2002348d0704deebca44ac lib/JavaScript/Code/Element.pm
-SHA1 7c20c963d0ab99ec32303bacbe92998c8bf9450c lib/JavaScript/Code/Expression.pm
-SHA1 9adf5d22261592c2a7bc4b59030427764b91d2f3 lib/JavaScript/Code/Expression/Arithmetic.pm
+SHA1 df32c95082654783d8a6519883c48300abe695a5 README
+SHA1 7a61475c03ba100697fc7543d858fd74130dbfad lib/JavaScript/Code.pm
+SHA1 3a1174d377e1e03ad5fd18630a6e92944e8d6776 lib/JavaScript/Code/Accessor.pm
+SHA1 eb16d793936fa430f264e1daafb7a62d2620f196 lib/JavaScript/Code/Array.pm
+SHA1 b592120c05d9914902d287dcec099a4de22a483b lib/JavaScript/Code/Block.pm
+SHA1 66ed959722834d4db6a3dde5de23ff9bc70e983b lib/JavaScript/Code/Condition.pm
+SHA1 7992ba6e1e63e49516339255276cc7818e31a698 lib/JavaScript/Code/Element.pm
+SHA1 d4ac4058e5f8b5699efc25c380bc1561df17bae0 lib/JavaScript/Code/Expression.pm
+SHA1 cd42a55fd653cf47d52659f5b274345eebe67349 lib/JavaScript/Code/Expression/Arithmetic.pm
+SHA1 9963eb50afedc8251b63e2ce3672f8498c48d43b lib/JavaScript/Code/Expression/Boolean.pm
 SHA1 13271289978a32c4423ac0ec08c81f63bbe1853e lib/JavaScript/Code/Expression/Node.pm
-SHA1 0f0636f8be87dbbdf627fe15789b9f544a0cf22d lib/JavaScript/Code/Expression/Node/Arithmetic.pm
-SHA1 64b31147c21c691db848c973859085f3a41d0837 lib/JavaScript/Code/Expression/Op.pm
+SHA1 f1d0ee069788214412693a85af787ae8734814f6 lib/JavaScript/Code/Expression/Node/Arithmetic.pm
+SHA1 6a2957f5f54495ec3232a2827b8a13e65aa8edc8 lib/JavaScript/Code/Expression/Node/Boolean.pm
+SHA1 3206bf8e1378e6832f4c0467a8f93bb7f728678a lib/JavaScript/Code/Expression/Op.pm
 SHA1 d720d82585142ad05ae698c5c99fcb41857b20a3 lib/JavaScript/Code/Expression/Op/Addition.pm
+SHA1 d31c320fc2ae4bb0c03cb367efd6f50355a8e584 lib/JavaScript/Code/Expression/Op/And.pm
 SHA1 a86869b4076cb72d0f964969f97abeb157824885 lib/JavaScript/Code/Expression/Op/Division.pm
+SHA1 36b613a6d608475923733b949ce08ad31cd96fdc lib/JavaScript/Code/Expression/Op/Equal.pm
+SHA1 a4fd42e22af936009b4a6de394f65d50bc310f9d lib/JavaScript/Code/Expression/Op/Greater.pm
+SHA1 a555c402d2b0c718cb0a7d8caff4f598016a090f lib/JavaScript/Code/Expression/Op/GreaterEqual.pm
+SHA1 3c30d0a698eab0e19933e381cff5ea203c707c2f lib/JavaScript/Code/Expression/Op/Less.pm
+SHA1 14a45093c13fe56227fa6f082f43278445700c40 lib/JavaScript/Code/Expression/Op/LessEqual.pm
 SHA1 b241a18982db3801174d2af54387ba6535734ee7 lib/JavaScript/Code/Expression/Op/Multiplication.pm
+SHA1 bb2e021ba25b1f4ede5151514724270bac4da08b lib/JavaScript/Code/Expression/Op/Not.pm
+SHA1 d04c6f28a1627a1c2cfbdf1db8d5b68cad9b50e3 lib/JavaScript/Code/Expression/Op/NotEqual.pm
+SHA1 d43052b78684a48d237671bed3efd9c3bbbc5b7b lib/JavaScript/Code/Expression/Op/Or.pm
 SHA1 da5a5a3e077b7d263f88d8c8c129435603758e27 lib/JavaScript/Code/Expression/Op/Subtraction.pm
-SHA1 81964880c86c0f21363a71e34b16fb46f54465a8 lib/JavaScript/Code/Expression/Op/Term.pm
-SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 lib/JavaScript/Code/Function.pm
+SHA1 af0a82ff1135c551499e352e26cb581be841e91d lib/JavaScript/Code/Expression/Op/Term.pm
+SHA1 eb0f141688d79a2f8a2aa8756fd1f0a5097430e1 lib/JavaScript/Code/Function.pm
+SHA1 af35b632733dbb7702c614a281c2ecabeac1012d lib/JavaScript/Code/Function/BuildIn.pm
+SHA1 b386501aa0e7fe62c5fc6b5685926f457f548183 lib/JavaScript/Code/Function/Result.pm
+SHA1 8ec146715675baa0228716f6b5efb42d89820871 lib/JavaScript/Code/Function/Result/Element.pm
 SHA1 a8dcc3734df2d5d78c641bfb2f18acf46f018d22 lib/JavaScript/Code/Hash.pm
 SHA1 0b96cfdc4bfa434755bece0299b1e7deff3bfba7 lib/JavaScript/Code/Number.pm
-SHA1 46a9b41080b98b0433d83856102fa18d980f1bac lib/JavaScript/Code/String.pm
-SHA1 39f9fc91b3181448cb439ebbc7f202378b983821 lib/JavaScript/Code/Type.pm
-SHA1 df693351035dfb8a25d296e56678314806e5d5b1 lib/JavaScript/Code/Value.pm
-SHA1 a869dc1dbf663e0d483a323dac1586d3e1c1bb28 lib/JavaScript/Code/Variable.pm
+SHA1 1d214bddda482c8be44c18785f854e9ccc31dff8 lib/JavaScript/Code/String.pm
+SHA1 38960990c18f1539394f400fe790121c421cedf9 lib/JavaScript/Code/Type.pm
+SHA1 6830002c4b7350c1b9b6ad32a883d6dbe2dd1ed7 lib/JavaScript/Code/Value.pm
+SHA1 ab7f33e2188b3c7ba622a4ce548b89fc86c64f58 lib/JavaScript/Code/Variable.pm
 SHA1 e7449bd745eb81ad6da60d436da977134b830ef4 t/01use.t
 SHA1 86d255a7c9f065a13049108362c949b3e35a4c24 t/02pod.t
 SHA1 e923679a1bbd8eb8f727e46f5906af25de27ec97 t/03podcoverage.t
@@ -50,11 +65,11 @@ SHA1 ea0eaf98577d29c491d48db3bfc69e334393e456 t/04examples.t
 Version: GnuPG v1.2.4 (MingW32)
 Comment: GnuPT 2.7
 
-iQEVAwUBQ+vou6nM4kGH82hDAQJB5wf9H4bE7OKLT7XC1AZP5jA0fJuwQ8EHgyHe
-0syACWp0XK2Fj2mgiE8h9d6wgN8x2T6lhUagzsajk01sa2auzJfzjdDXUVI4oYC8
-Pep59sevZGlNXapcTWm4/N5JfJmzNhDrx6vkAwfQYpGBohW5ffkHQKlQcNbz/yAO
-tPM/bV2zZl3I5eODcUYkHS2V9MO+Zo7NiwWRXXE6MdI7DukYFmU/NvfyyEh7JnWt
-XXnuHM8MWGQqbECIwv2udgf6NQCRGLH13MXVnMZoG9x3oo+dc7zEq4ZnTVDXE5nx
-09xHpzAK9+CRXDCkHt2lX3b4TM7DSRNgPDWq1fylsrJSfhAyf/QbOg==
-=EP1Q
+iQEVAwUBQ/n56anM4kGH82hDAQJ65wf7BD6s4ZD850wUZP2YaOFurhhggQNVwno1
+PowqUFx49AEc3xqPeo9aPPyu8E4t/E0HIKmBRpN5402rV90dEaxGXkcOIb7neY+/
+zIM4xz0K5dBmUgw3jJ7c1oNER6ylNWCXfSkVD47gjyPkb/+rjxrADP9JPlBiQZ/3
++8rz0LOJn+XAqVeFgBtBY5K7iBGR1EOqWX8DTvmf7teyANQYN6zZMgDvu3Stntv8
+FQSTAOPikhJ4NWpjoz8Y1BbLy/goS/eeAE7o+Wk84kdQnWr/yar3T69jLXCZxo1j
++LLWuMzLY5XXbLcvMgxU1mgphsO4PE/79FZ4yc06IIa1Jlecti+LFQ==
+=WUMR
 -----END PGP SIGNATURE-----

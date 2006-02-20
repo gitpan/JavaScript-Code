@@ -4,7 +4,11 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Block ];
 
-$VERSION = '0.04';
+use JavaScript::Code::Condition ();
+use JavaScript::Code::Variable  ();
+use JavaScript::Code::Function  ();
+
+$VERSION = '0.05';
 
 =head1 NAME
 
@@ -17,7 +21,10 @@ JavaScript::Code - A JavaScript Code Framework
     use strict;
     use warnings;
     use JavaScript::Code;
+    use JavaScript::Code::Condition;
+    use JavaScript::Code::Expression::Boolean qw/AND OR NOT EQUAL NOT_EQUAL/;
     use JavaScript::Code::Variable;
+    use JavaScript::Code::Function;
 
     # create the code object
     my $code = JavaScript::Code->new();
@@ -38,9 +45,11 @@ JavaScript::Code - A JavaScript Code Framework
     # create some numbers
     my $x1 = JavaScript::Code::Number->new()->value( 10 );
     my $x2 = JavaScript::Code::Number->new()->value( 20 );
+    my $x3 = JavaScript::Code::Number->new()->value( 30 );
 
     # build expressions
-    my $c1 = $var2 - ($x1 + $x2 + $x1->value(30)) * $x2->value(40);
+    my $c0 = $x1 + $x2;
+    my $c1 = $var2 - ($c0 + $x1->value(30)) * $x2->value(40);
     my $c2 = $c1 * $var3;
 
     # assign a expression to a variable and add it to your code block
@@ -50,12 +59,32 @@ JavaScript::Code - A JavaScript Code Framework
     $block->add( JavaScript::Code::Block->new()->add( $var1->value("Bar!") ) );
     $block->add( $var1->clone->value("Foo!") ); # clone 'a' and give it a new value
 
+    # boolean expressions
+    my $foo = $c0->as_variable( name => 'foo' );
+    my $e1 = EQUAL( $foo, $x3 );
+
+    # conditions
+    my $cond = JavaScript::Code::Condition->new;
+    $cond->add_if( expression => $e1, block => $block );
+    $cond->add_if( expression => NOT_EQUAL( $foo, $x3 ), block => $block );
+    $cond->else( $block );
+
     # add your block and other stuff to the code object
+    $code->add( $foo );
     $code->add( [ $var4->value( 4711 ), $var1->value( "Perl!" ) ] );
-    $code->add( $block );
+    $code->add( $cond );
     $code->add( $var2->value(21) ); # 'b' with value 21 (note the different scope)
     $code->add( $var5 );
-    $code->add_variable( name => 'c', value => 'Larry' );
+    $code->add_variable( name => "y", value => 'Larry', index => 16 );
+
+    #functions
+    my $func1block = JavaScript::Code::Block->new();
+    $func1block->add( JavaScript::Code::Function::BuildIn->return->call( '"test"')->as_element );
+
+    my $func1 = JavaScript::Code::Function->new( name => "foofunc", block => $func1block );
+    $func1->parameters( qw[ p1 p2 p3 p4 ] );
+    $code->add( $func1 );
+    $code->add( $func1->call([ $var5, $var2, '"foo"', 12 ])->as_variable( name => 'result' ) );
 
     # output to be embedded in your html code
     print $code->output_for_html;

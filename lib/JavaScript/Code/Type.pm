@@ -6,7 +6,6 @@ use base qw[
   JavaScript::Code::Accessor
   JavaScript::Code::Value
 ];
-use Carp;
 
 use overload '""' => sub { shift->output };
 
@@ -52,13 +51,13 @@ sub new {
     my $args = shift;
 
     my $via = lc( delete $args->{type} || '' )
-      or croak "No type provided.";
+      or die "No type provided.";
 
     $via = ucfirst $via;
     $via = "JavaScript::Code::$via";
 
     eval "require $via";    # make sure, it is loaded
-    croak $@ if $@;
+    die $@ if $@;
 
     return $via->new( $args, @_ );
 }
@@ -106,7 +105,7 @@ sub build {
             $object = $value;
         }
 
-        Carp::croak "Unexpected type '$reftype'." unless defined $object;
+        die "Unexpected type '$reftype'." unless defined $object;
     }
 
     return $object;

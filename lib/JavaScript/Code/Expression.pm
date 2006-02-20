@@ -9,7 +9,7 @@ use base qw[
 
 __PACKAGE__->mk_ro_accessors(qw[ tree ]);
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 =head1 NAME
 
@@ -21,11 +21,57 @@ A Expression Class
 
 =head1 METHODS
 
+=cut
+
+sub command {
+    my ( $self, $op, $left, $right ) = @_;
+
+    my $class = 'JavaScript::Code::Expression::Op::' . $op;
+    eval "require $class";
+    die $@ if $@;
+
+    my $tree;
+    if ( $class->unary ) {
+
+        $tree = $class->new(
+              $left->isa('JavaScript::Code::Expression')
+            ? $left->tree
+            : JavaScript::Code::Expression::Op::Term->new( $left->clone )
+        );
+
+    }
+    else {
+
+        $tree = $class->new(
+            $left->isa('JavaScript::Code::Expression') ? $left->tree
+            : JavaScript::Code::Expression::Op::Term->new( $left->clone ),
+            $right->isa('JavaScript::Code::Expression') ? $right->tree
+            : JavaScript::Code::Expression::Op::Term->new( $right->clone )
+        );
+    }
+
+    $self->{tree} = $tree;
+
+    return $self;
+}
+
 =head2 $self->tree( )
 
 Returns a tree of L<JavaScript::Code::Expression::Op>'s
 
 =cut
+
+=head2 $self->output( )
+
+=cut
+
+sub output {
+    my ($self) = @_;
+
+    my $tree = $self->tree;
+    return '' unless defined $tree;
+    return $tree->output;
+}
 
 =head1 SEE ALSO
 

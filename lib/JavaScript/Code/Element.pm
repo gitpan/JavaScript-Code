@@ -1,8 +1,26 @@
 package JavaScript::Code::Element;
 
 use strict;
-use vars qw[ $VERSION ];
+use vars qw[ $VERSION @RESERVEDWORDS ];
 use base qw[ JavaScript::Code::Accessor Clone ];
+
+@RESERVEDWORDS = qw [
+  abstract boolean break byte
+  case catch char class const continue
+  default delete do double
+  else export extends
+  false final finally float for function
+  goto
+  if implements in instanceof int
+  long
+  native new null
+  package private protected public
+  return
+  short static super switch synchronized
+  this thow throws transient true try typeof
+  var void
+  while with
+];
 
 use overload
   'eq' => sub { 0 },
@@ -60,17 +78,30 @@ sub exists_in_parent {
         return $self->exists_in_parent( $obj, $parent );
     }
 
-    return 0 unless $parent->can('elements');
-    return 0 unless $parent->elements;
+    if ( $parent->can('elements') ) {
+        foreach my $element ( @{ $parent->elements } ) {
+            last
+              if Scalar::Util::refaddr($element) ==
+              Scalar::Util::refaddr($self);
+            next unless $element->isa('JavaScript::Code::Variable');
+            return 1 if $obj eq $element;
 
-    foreach my $element ( @{ $parent->elements } ) {
-
-        last if Scalar::Util::refaddr($element) == Scalar::Util::refaddr($self);
-        return 1 if $obj eq $element;
-
+        }
     }
 
     return $parent->exists_in_parent($obj);
+}
+
+{    # I do not like this, but well ... :-)
+
+    my %ReservedWords = map { ( $_, 1 ) } @RESERVEDWORDS;
+
+    sub is_valid_name {
+        my ( $self, $name, $built_in ) = @_;
+
+        return 0 if !$built_in and exists $ReservedWords{$name};
+        return $name =~ m{^[a-zA-Z][a-zA-Z0-9_]*$};
+    }
 }
 
 1;

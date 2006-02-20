@@ -1,41 +1,24 @@
 package JavaScript::Code::Expression::Arithmetic;
 
 use strict;
-use vars qw[ $VERSION ];
+use vars qw[ $VERSION @EXPORT_OK ];
 use base qw[
   JavaScript::Code::Expression
   JavaScript::Code::Expression::Node::Arithmetic
+  Exporter
 ];
-use Carp;
 
-$VERSION = '0.01';
+@EXPORT_OK = qw[ ADD SUB MUL DIV ];
+
+$VERSION = '0.03';
 
 =head1 NAME
 
-JavaScript::Code::Expression::Arithmetic - a javascript arithmetic expression
+JavaScript::Code::Expression::Arithmetic - A JavaScript Arithmetic Expression
 
 =head1 METHODS
 
 =cut
-
-sub command {
-    my ( $self, $op, $left, $right ) = @_;
-
-    my $class = 'JavaScript::Code::Expression::Op::' . $op;
-    eval "require $class";
-    croak $@ if $@;
-
-    my $tree = $class->new(
-        $left->isa('JavaScript::Code::Expression::Arithmetic') ? $left->tree
-        : JavaScript::Code::Expression::Op::Term->new( $left->clone ),
-        $right->isa('JavaScript::Code::Expression::Arithmetic') ? $right->tree
-        : JavaScript::Code::Expression::Op::Term->new( $right->clone )
-    );
-
-    $self->{tree} = $tree;
-
-    return $self;
-}
 
 =head2 $self->addition( ... )
 
@@ -77,17 +60,10 @@ sub division {
     return $e;
 }
 
-=head2 $self->output( )
-
-=cut
-
-sub output {
-    my ($self) = @_;
-
-    my $tree = $self->tree;
-    return '' unless defined $tree;
-    return $tree->output;
-}
+sub ADD { &addition }
+sub SUB { &subtraction }
+sub MUL { &multiplication }
+sub DIV { &division }
 
 =head1 SEE ALSO
 

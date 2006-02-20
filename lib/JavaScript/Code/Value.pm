@@ -3,8 +3,9 @@ package JavaScript::Code::Value;
 use strict;
 use vars qw[ $VERSION ];
 use base qw[ Clone ];
+use JavaScript::Code::Variable ();
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 =head1 NAME
 
@@ -17,6 +18,24 @@ JavaScript::Code::Value - A JavaScript Value
 =head1 DESCRIPTION
 
 A value can e.g. be assigned to a variable.
+
+=head1 METHODS
+
+=head2 $self->as_variable( ... )
+
+=cut
+
+sub can_be_assigned { return 1; }
+
+sub as_variable {
+    my $self = shift;
+    my $args = $self->args(@_);
+
+    return JavaScript::Code::Variable->new(
+        name  => $args->{name},
+        value => $self
+    );
+}
 
 =head1 SEE ALSO
 

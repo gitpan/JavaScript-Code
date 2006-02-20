@@ -82,7 +82,7 @@ Adds one or more new element(s) to the block.
 sub add {
     my ( $self, $array ) = @_;
 
-    Carp::croak 'Nothing to add.'
+    die 'Nothing to add.'
       unless defined $array;
 
     $array = [$array] unless ref $array eq 'ARRAY';
@@ -90,11 +90,11 @@ sub add {
     my @elements = ();
     foreach my $element ( @{$array} ) {
 
-        Carp::croak "Not a 'JavaScript::Code::Element'."
+        die "Not a 'JavaScript::Code::Element'."
           unless ref $element
           and $element->isa('JavaScript::Code::Element');
 
-        Carp::croak "Not able to a element of type 'JavaScript::Code'."
+        die "Not able to a element of type 'JavaScript::Code'."
           if $element->isa('JavaScript::Code');
 
         push @elements, $element->clone->parent($self);
@@ -114,9 +114,9 @@ Creates a variable using the arguments and adds it to the the block.
 sub add_variable {
     my $self = shift;
 
-    my $var = JavaScript::Code::Variable->new( @_ );
+    my $var = JavaScript::Code::Variable->new(@_);
 
-    return $self->add( $var );
+    return $self->add($var);
 }
 
 =head2 $self->elements( )
