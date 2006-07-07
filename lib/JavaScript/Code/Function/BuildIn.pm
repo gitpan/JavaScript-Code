@@ -8,7 +8,7 @@ $VERSION = '0.01';
 
 =head1 NAME
 
-JavaScript::Code::Function - JavaScript Build-In Functions
+JavaScript::Code::Function::BuildIn - JavaScript Build-In Functions
 
 =head1 METHODS
 
@@ -16,9 +16,9 @@ JavaScript::Code::Function - JavaScript Build-In Functions
 
 sub is_buildin { return 1; }
 
-=head2 JavaScript::Code::Function::BuildIn::return
+=head2 JavaScript::Code::Function->BuildIn::return
 
-return function
+The return function.
 
 =cut
 

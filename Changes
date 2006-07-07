@@ -1,5 +1,8 @@
 Revision history for Perl extension JavaScript-Code
 
+0.06  Fri Jul 07 20:22 2006
+    - module dependency fixed
+
 0.05  Fri Feb 20 18:14 2006
     - Boolean expressions
     - Exports for Arithmetic expressions

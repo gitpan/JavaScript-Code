@@ -8,17 +8,15 @@ use base qw[
 
 __PACKAGE__->mk_accessors(qw[ value ]);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 =head1 NAME
 
 JavaScript::Code::Function::Result::Element - A JavaScript Function Result Element
 
-=head2 SYNOPSIS
-
-=head1 DESCRIPTION
-
 =head1 METHODS
+
+=head2 $self->output( )
 
 =cut
 
@@ -32,7 +30,7 @@ sub output {
 
 =head1 SEE ALSO
 
-L<JavaScript::Code>, L<JavaScript::Code::Variable>
+L<JavaScript::Code>
 
 =head1 AUTHOR
 

@@ -8,7 +8,7 @@ use JavaScript::Code::Condition ();
 use JavaScript::Code::Variable  ();
 use JavaScript::Code::Function  ();
 
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 =head1 NAME
 

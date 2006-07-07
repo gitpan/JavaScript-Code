@@ -6,6 +6,7 @@ WriteMakefile
           'VERSION_FROM' => 'lib/JavaScript/Code.pm',
           'PREREQ_PM' => {
                            'Class::Accessor::Chained::Fast' => '0',
+                           'Clone' => '0.15',
                            'Scalar::Util' => '1.14'
                          },
           'INSTALLDIRS' => 'site',

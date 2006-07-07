@@ -1,17 +1,18 @@
 ---
 name: JavaScript-Code
-version: 0.05
+version: 0.06
 author:
   - 'Sascha Kiefer, C<esskar@cpan.org>'
 abstract: A JavaScript Code Framework
 license: perl
 requires:
   Class::Accessor::Chained::Fast: 0
+  Clone: 0.15
   Scalar::Util: 1.14
 provides:
   JavaScript::Code:
     file: lib/JavaScript/Code.pm
-    version: 0.05
+    version: 0.06
   JavaScript::Code::Accessor:
     file: lib/JavaScript/Code/Accessor.pm
     version: 0.04
@@ -20,13 +21,13 @@ provides:
     version: 0.02
   JavaScript::Code::Block:
     file: lib/JavaScript/Code/Block.pm
-    version: 0.04
+    version: 0.05
   JavaScript::Code::Condition:
     file: lib/JavaScript/Code/Condition.pm
-    version: 0.01
+    version: 0.02
   JavaScript::Code::Element:
     file: lib/JavaScript/Code/Element.pm
-    version: 0.02
+    version: 0.03
   JavaScript::Code::Expression:
     file: lib/JavaScript/Code/Expression.pm
     version: 0.03
@@ -98,10 +99,10 @@ provides:
     version: 0.01
   JavaScript::Code::Function::Result:
     file: lib/JavaScript/Code/Function/Result.pm
-    version: 0.01
+    version: 0.02
   JavaScript::Code::Function::Result::Element:
     file: lib/JavaScript/Code/Function/Result/Element.pm
-    version: 0.01
+    version: 0.02
   JavaScript::Code::Hash:
     file: lib/JavaScript/Code/Hash.pm
     version: 0.01
@@ -122,5 +123,5 @@ provides:
     version: 0.05
   private:
     file: lib/JavaScript/Code/Element.pm
-    version: 0.02
+    version: 0.03
 generated_by: Module::Build version 0.2611

@@ -6,7 +6,7 @@ use base qw[ JavaScript::Code::Element ];
 use JavaScript::Code::Function::Result  ();
 use JavaScript::Code::Function::BuildIn ();
 
-__PACKAGE__->mk_accessors(qw[ name parameters is_builtin ]);
+__PACKAGE__->mk_accessors(qw[ name parameters is_buildin ]);
 
 $VERSION = '0.01';
 
@@ -15,6 +15,20 @@ $VERSION = '0.01';
 JavaScript::Code::Function - A JavaScript Function
 
 =head1 METHODS
+
+=cut
+
+=head2 $self->name( $name )
+
+Sets or gets the function name.
+
+=cut
+
+=head2 $self->block( $block )
+
+Sets or gets the code block of the function.
+
+I<$block> must be a L<JavaScript::Code::Block>
 
 =cut
 
@@ -37,6 +51,12 @@ sub block {
     }
 }
 
+=head2 $self->is_buildin( )
+
+Returns whether or not the function is a build-in function
+
+=cut
+
 sub is_buildin { return 0; }
 
 sub check_name {
@@ -51,6 +71,12 @@ sub check_name {
 
     return $name;
 }
+
+=head2 $self->call( )
+
+Calls the functions. Returns a L<JavaScript::Code::Function::Result>.
+
+=cut
 
 sub call {
     my $self = shift;

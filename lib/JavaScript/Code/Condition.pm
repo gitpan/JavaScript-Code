@@ -6,7 +6,7 @@ use base qw[ JavaScript::Code::Element ];
 
 __PACKAGE__->mk_ro_accessors(qw[ ifs ]);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 =head1 NAME
 
@@ -14,7 +14,15 @@ JavaScript::Code::Condition - A JavaScript Condition
 
 =head1 METHODS
 
-=head2 $self->add_if( ... )
+=head2 $self->add_if( %args | \%args )
+
+Adds a new if statement.
+
+I<%args> must contain the following keys:
+
+- expression: a L<JavaScript::Code::Expression::Boolean> object
+
+- block: a L<JavaScript::Code::Block> object
 
 =cut
 
@@ -51,7 +59,11 @@ sub add_if {
     return $self;
 }
 
-=head2 $self->else( ... )
+=head2 $self->else( $block )
+
+Sets the else statement.
+
+I<$block> must be a L<JavaScript::Code::Block>
 
 =cut
 

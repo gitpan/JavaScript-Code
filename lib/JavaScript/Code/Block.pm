@@ -5,10 +5,11 @@ use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Element ];
 
 use JavaScript::Code::Variable ();
+use JavaScript::Code::Function ();
 
 __PACKAGE__->mk_ro_accessors(qw[ elements ]);
 
-$VERSION = '0.04';
+$VERSION = '0.05';
 
 =head1 NAME
 
@@ -109,14 +110,34 @@ sub add {
 
 Creates a variable using the arguments and adds it to the the block.
 
+Returns a L<JavaScript::Code::Variable> object.
+
 =cut
 
 sub add_variable {
     my $self = shift;
 
     my $var = JavaScript::Code::Variable->new(@_);
+    $self->add($var);
 
-    return $self->add($var);
+    return $var;
+}
+
+=head2 $self->add_function( %args | \%args )
+
+Creates a function using the arguments and adds it to the the block.
+
+Returns a L<JavaScript::Code::Function> object.
+
+=cut
+
+sub add_function {
+    my $self = shift;
+
+    my $func = JavaScript::Code::Function->new(@_);
+    $self->add($func);
+
+    return $func;
 }
 
 =head2 $self->elements( )
@@ -127,7 +148,7 @@ Returns a ref-array of all added elements.
 
 =head2 $self->output( )
 
-Returns the javascript-code block.
+Returns the javascript code for the block.
 
 =cut
 

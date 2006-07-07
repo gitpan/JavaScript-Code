@@ -4,6 +4,8 @@ use strict;
 use vars qw[ $VERSION @RESERVEDWORDS ];
 use base qw[ JavaScript::Code::Accessor Clone ];
 
+$VERSION = '0.03';
+
 @RESERVEDWORDS = qw [
   abstract boolean break byte
   case catch char class const continue
@@ -28,8 +30,6 @@ use overload
 
 __PACKAGE__->mk_accessors(qw[ parent ]);
 
-$VERSION = '0.02';
-
 =head1 NAME
 
 JavaScript::Code::Element - A JavaScript Element
@@ -43,6 +43,12 @@ Base class for javascript elements like blocks, variables, functions and so on.
 =head2 $self->clone( )
 
 Clones the element.
+
+=cut
+
+=head2 $self->parent( )
+
+The parent element.
 
 =cut
 

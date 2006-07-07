@@ -13,15 +13,11 @@ use overload
 
 __PACKAGE__->mk_accessors(qw[ value ]);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 =head1 NAME
 
 JavaScript::Code::Function::Result - A JavaScript Function Result
-
-=head2 SYNOPSIS
-
-=head1 DESCRIPTION
 
 =head1 METHODS
 
@@ -30,6 +26,12 @@ JavaScript::Code::Function::Result - A JavaScript Function Result
 sub output {
     return shift->value;
 }
+
+=head2 $self->as_element( )
+
+Returns a the result as a L<JavaScript::Code::Function::Result::Element> object.
+
+=cut
 
 sub as_element {
     my $self = shift;
@@ -42,7 +44,7 @@ sub as_element {
 
 =head1 SEE ALSO
 
-L<JavaScript::Code>, L<JavaScript::Code::Variable>
+L<JavaScript::Code>
 
 =head1 AUTHOR
 
