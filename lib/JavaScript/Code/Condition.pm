@@ -6,13 +6,15 @@ use base qw[ JavaScript::Code::Element ];
 
 __PACKAGE__->mk_ro_accessors(qw[ ifs ]);
 
-$VERSION = '0.02';
+$VERSION = '0.08';
 
 =head1 NAME
 
 JavaScript::Code::Condition - A JavaScript Condition
 
 =head1 METHODS
+
+=head2 new
 
 =head2 $self->add_if( %args | \%args )
 
@@ -85,6 +87,10 @@ sub else {
         return $self->{else};
     }
 }
+
+=head2 $self->output( )
+
+=cut
 
 sub output {
     my $self  = shift;

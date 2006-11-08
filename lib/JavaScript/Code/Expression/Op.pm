@@ -4,7 +4,17 @@ use strict;
 use vars qw[ $VERSION ];
 use JavaScript::Code::Expression::Op::Term;
 
-$VERSION = '0.02';
+$VERSION = '0.08';
+
+=head1 NAME
+
+JavaScript::Code::Expression::Node - Represents a Node in JavaScript Expression
+
+=head1 METHODS
+
+=head2 new
+
+=cut
 
 sub new {
     my $obj   = shift;
@@ -16,9 +26,21 @@ sub new {
     return bless [@_], $class;
 }
 
+=head2 children
+
+=cut
+
 sub children { return @{ shift() } }
 
+=head2 unary
+
+=cut
+
 sub unary { return 0; }
+
+=head2 output
+
+=cut
 
 sub output {
     my ( $self, $precedence ) = @_;
@@ -30,5 +52,20 @@ sub output {
 
     return $output;
 }
+
+=head1 SEE ALSO
+
+L<JavaScript::Code>
+
+=head1 AUTHOR
+
+Sascha Kiefer, C<esskar@cpan.org>
+
+=head1 LICENSE
+
+This library is free software, you can redistribute it and/or modify it under
+the same terms as Perl itself.
+
+=cut
 
 1;

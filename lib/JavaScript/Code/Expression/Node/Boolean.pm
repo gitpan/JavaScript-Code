@@ -14,15 +14,13 @@ use overload
   '==' => \&equal,
   '!=' => \&not_equal;
 
-$VERSION = '0.01';
+$VERSION = '0.08';
 
 =head1 NAME
 
 JavaScript::Code::Expression::Node::Boolean - A Node For JavaScript Boolean Expressions
 
 =head1 METHODS
-
-=cut
 
 =head2 $self->less( ... )
 
@@ -71,8 +69,6 @@ sub equal {
 sub not_equal {
     return JavaScript::Code::Expression::Boolean::not_equal( @_ );
 }
-
-=cut
 
 =head1 SEE ALSO
 

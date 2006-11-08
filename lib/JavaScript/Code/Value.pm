@@ -5,7 +5,7 @@ use vars qw[ $VERSION ];
 use base qw[ Clone ];
 use JavaScript::Code::Variable ();
 
-$VERSION = '0.02';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -21,11 +21,16 @@ A value can e.g. be assigned to a variable.
 
 =head1 METHODS
 
-=head2 $self->as_variable( ... )
+=head2 $self->can_be_assigned( )
 
 =cut
 
 sub can_be_assigned { return 1; }
+
+=head2 $self->as_variable( ... )
+
+=cut
+
 
 sub as_variable {
     my $self = shift;

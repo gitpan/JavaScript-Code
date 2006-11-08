@@ -4,7 +4,7 @@ use strict;
 use vars qw[ $VERSION @RESERVEDWORDS ];
 use base qw[ JavaScript::Code::Accessor Clone ];
 
-$VERSION = '0.03';
+$VERSION = '0.08';
 
 @RESERVEDWORDS = qw [
   abstract boolean break byte
@@ -40,6 +40,8 @@ Base class for javascript elements like blocks, variables, functions and so on.
 
 =head1 METHODS
 
+=head2 new
+
 =head2 $self->clone( )
 
 Clones the element.
@@ -67,12 +69,20 @@ the same terms as Perl itself.
 
 =cut
 
+=head2 $self->get_indenting( )
+
+=cut
+
 sub get_indenting {
     my ( $self, $intend ) = @_;
 
     return '' unless $intend > 1;
     return '    ' x ( $intend - 1 );
 }
+
+=head2 $self->exists_in_parent( )
+
+=cut
 
 sub exists_in_parent {
     my ( $self, $obj, $parent ) = @_;
@@ -101,6 +111,10 @@ sub exists_in_parent {
 {    # I do not like this, but well ... :-)
 
     my %ReservedWords = map { ( $_, 1 ) } @RESERVEDWORDS;
+
+=head2 $self->is_valid_name( )
+
+=cut
 
     sub is_valid_name {
         my ( $self, $name, $built_in ) = @_;

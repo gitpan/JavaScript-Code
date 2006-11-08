@@ -5,7 +5,7 @@ use vars qw[ $VERSION ];
 use base
   qw[ JavaScript::Code::Type JavaScript::Code::Expression::Node::Arithmetic ];
 
-$VERSION = '0.04';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -29,9 +29,17 @@ See also the L<JavaScript::Code::Type> documentation.
 
 =cut
 
+=head2 $self->type( )
+
+=cut
+
 sub type {
     return "Number";
 }
+
+=head2 $self->output( )
+
+=cut
 
 sub output {
     my ($self) = @_;

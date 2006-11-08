@@ -18,7 +18,7 @@ use overload
 
 __PACKAGE__->mk_accessors(qw[ index name declared ref ]);
 
-$VERSION = '0.05';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -59,6 +59,8 @@ Example:
     var b = "Test!"; // Variable b with a string value of "Test!"
 
 =head1 METHODS
+
+=head2 new
 
 =cut
 

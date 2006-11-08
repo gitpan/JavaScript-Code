@@ -13,13 +13,15 @@ use overload
 
 __PACKAGE__->mk_accessors(qw[ value ]);
 
-$VERSION = '0.02';
+$VERSION = '0.08';
 
 =head1 NAME
 
 JavaScript::Code::Function::Result - A JavaScript Function Result
 
 =head1 METHODS
+
+=head2 $self->output( )
 
 =cut
 

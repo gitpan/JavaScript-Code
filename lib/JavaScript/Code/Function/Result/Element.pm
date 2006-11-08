@@ -8,7 +8,7 @@ use base qw[
 
 __PACKAGE__->mk_accessors(qw[ value ]);
 
-$VERSION = '0.02';
+$VERSION = '0.08';
 
 =head1 NAME
 

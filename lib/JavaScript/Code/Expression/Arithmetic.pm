@@ -10,7 +10,7 @@ use base qw[
 
 @EXPORT_OK = qw[ ADD SUB MUL DIV ];
 
-$VERSION = '0.03';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -59,6 +59,14 @@ sub division {
     $e->command( 'Division', @_ );
     return $e;
 }
+
+=head2 ADD
+
+=head2 SUB
+
+=head2 MUL
+
+=head2 DIV
 
 sub ADD { &addition }
 sub SUB { &subtraction }

@@ -6,7 +6,7 @@ use base qw[ JavaScript::Code::Type ];
 
 __PACKAGE__->mk_accessors(qw[ elements size ]);
 
-$VERSION = '0.02';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -23,6 +23,8 @@ JavaScript::Code::Array - A JavaScript Array Type
     my $array = JavaScript::Code::Array->new( elements => [] );
 
 =head1 METHODS
+
+=head2 new( ... )
 
 =cut
 
@@ -119,9 +121,17 @@ sub length {
     return scalar @{ $self->elements };
 }
 
+=head2 $self->type( )
+
+=cut
+
 sub type {
     return "Array";
 }
+
+=head2 $self->output( )
+
+=cut
 
 sub output {
     my ($self) = @_;

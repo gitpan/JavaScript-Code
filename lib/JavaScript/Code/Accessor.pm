@@ -7,7 +7,7 @@ use Carp ();
 
 use Scalar::Util ();
 
-$VERSION = '0.04';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -33,10 +33,10 @@ sub new {
     my $obj   = shift;
     my $class = ref $obj || $obj;
 
-    return $class->SUPER::new( $class->args(@_) );
+    return $class->SUPER::new( $class->__args(@_) );
 }
 
-sub args {
+sub __args {
     my $self = shift;
 
     return {} unless @_;

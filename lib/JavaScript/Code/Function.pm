@@ -8,7 +8,7 @@ use JavaScript::Code::Function::BuildIn ();
 
 __PACKAGE__->mk_accessors(qw[ name parameters is_buildin ]);
 
-$VERSION = '0.01';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -59,6 +59,10 @@ Returns whether or not the function is a build-in function
 
 sub is_buildin { return 0; }
 
+=head2 $self->check_name( )
+
+=cut
+
 sub check_name {
     my $self = shift;
 
@@ -93,6 +97,10 @@ sub call {
 
     return JavaScript::Code::Function::Result->new( value => $result );
 }
+
+=head2 $self->output( )
+
+=cut
 
 sub output {
     my $self  = shift;

@@ -9,7 +9,7 @@ use base qw[
 
 __PACKAGE__->mk_ro_accessors(qw[ tree ]);
 
-$VERSION = '0.03';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -20,6 +20,8 @@ JavaScript::Code::Expression - A JavaScript Expression
 A Expression Class
 
 =head1 METHODS
+
+=head2 $self->command( )
 
 =cut
 

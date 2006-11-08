@@ -16,7 +16,7 @@ use JavaScript::Code::Number ();
 use JavaScript::Code::Array  ();
 use JavaScript::Code::Hash   ();
 
-$VERSION = '0.02';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -71,6 +71,8 @@ Returns a string that represents the underlaying type.
 =head2 $self->value( $value )
 
 Gets or sets the associated value.
+
+=head2 $self->build( )
 
 =cut
 

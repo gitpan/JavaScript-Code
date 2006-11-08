@@ -4,7 +4,7 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Function ];
 
-$VERSION = '0.01';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -14,9 +14,13 @@ JavaScript::Code::Function::BuildIn - JavaScript Build-In Functions
 
 =cut
 
+=head2 is_buildin
+
+=cut
+
 sub is_buildin { return 1; }
 
-=head2 JavaScript::Code::Function->BuildIn::return
+=head2 return
 
 The return function.
 

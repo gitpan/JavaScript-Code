@@ -9,7 +9,7 @@ use JavaScript::Code::Function ();
 
 __PACKAGE__->mk_ro_accessors(qw[ elements ]);
 
-$VERSION = '0.05';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -57,6 +57,8 @@ Example:
     print $block1->output;
 
 =head1 METHODS
+
+=head2 new
 
 =cut
 

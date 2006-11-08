@@ -13,15 +13,13 @@ use base qw[
   LESS LESS_EQUAL GREATER GREATER_EQUAL EQUAL NOT_EQUAL
 ];
 
-$VERSION = '0.01';
+$VERSION = '0.08';
 
 =head1 NAME
 
 JavaScript::Code::Expression::Boolean - A JavaScript Boolean Expression
 
 =head1 METHODS
-
-=cut
 
 =head2 $self->and( ... )
 
@@ -118,6 +116,24 @@ sub not_equal {
     $e->command( 'NotEqual', @_ );
     return $e;
 }
+
+=head2 AND
+
+=head2 OR
+
+=head2 NOT
+
+=head2 LESS
+
+=head2 LESS_EQUAL
+
+=head2 GREATER
+
+=head2 GREATER_EQUAL
+
+=head2 EQUAL
+
+=head2 NOT_EQUAL
 
 sub AND           { &and }
 sub OR            { &or }

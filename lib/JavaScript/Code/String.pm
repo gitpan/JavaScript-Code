@@ -4,7 +4,7 @@ use strict;
 use vars qw[ $VERSION ];
 use base qw[ JavaScript::Code::Type ];
 
-$VERSION = '0.04';
+$VERSION = '0.08';
 
 =head1 NAME
 
@@ -26,11 +26,17 @@ JavaScript::Code::String - A JavaScript String Type
 
 See also the L<JavaScript::Code::Type> documentation.
 
+=head2 $self->type( )
+
 =cut
 
 sub type {
     return 'String';
 }
+
+=head2 $self->output( )
+
+=cut
 
 sub output {
     my ($self) = @_;
